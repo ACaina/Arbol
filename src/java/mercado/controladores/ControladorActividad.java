@@ -33,7 +33,9 @@ public class ControladorActividad implements Serializable {
     public void obtenerActividades() {
         try {
             lstActividades = FActividad.obtenerActividades();
+            System.out.println("total de actividades: "+lstActividades.size());
         } catch (Exception e) {
+            System.out.println("public void obtenerActividades() dice: "+e.getMessage());
             Util.addErrorMessage(e.getMessage());
         }
     }

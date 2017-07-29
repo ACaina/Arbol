@@ -16,7 +16,7 @@ public class FActividad {
         String consulta;
         try {
             accesoDatos = new AccesoDatos();
-            consulta = "select * from public.f_seleccionar_actividades()";
+            consulta = "select * from public.f_seleccionar_actividad()";
             resultSet = accesoDatos.ejecutaQuery(consulta);
             while (resultSet.next()) {
                 actividad = new Actividad();

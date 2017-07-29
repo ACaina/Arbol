@@ -69,5 +69,32 @@ public class FSeccion {
     }
 
     
+    public static ArrayList<Seccion> obtenerSeccionesDadoEstado(String estado) throws Exception {
+        ArrayList<Seccion> lst = new ArrayList<>();
+        Seccion seccion;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "select * from f_buscar_secciones(?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setString(1, estado);
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            while (resultSet.next()) {
+                seccion = new Seccion();
+                seccion.setIdSeccion(resultSet.getInt("id_seccion"));
+                seccion.setNombre_seccion(resultSet.getString("nombre_seccion"));
+                seccion.setEstado(resultSet.getString("estado"));
+                seccion.setArea(resultSet.getDouble("area"));
+                seccion.setDimension(resultSet.getString("dimension"));
+                lst.add(seccion);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return lst;
+    }
     
 }
