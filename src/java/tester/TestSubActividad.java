@@ -19,6 +19,7 @@ public class TestSubActividad {
      */
     public static void main(String[] args) {
         try {
+            
             SubActividad sub = FSubActividad.obtenerSubActividadDadoCodigo(1);
             System.out.println("\n Sub actividad: " + sub.getSubActividad()
                     + "\n Id: " + sub.getIdSubActividad());
