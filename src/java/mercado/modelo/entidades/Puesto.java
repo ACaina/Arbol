@@ -11,20 +11,20 @@ package mercado.modelo.entidades;
  */
 public class Puesto {
     private int id_puesto;
-    private String numero_puesto;
-    private Tarifa Tarifa;
-    private Mercado Mercado;
+    private int numero_puesto;
+    private Tarifa id_tarifa;
+    private Mercado id_mercado;
 
     public Puesto() {
-        Tarifa = new Tarifa();
-        Mercado = new Mercado();
+        id_tarifa = new Tarifa();
+        id_mercado = new Mercado();
     }
 
-    public Puesto(int id_puesto, String numero_puesto, Tarifa Tarifa, Mercado Mercado) {
+    public Puesto(int id_puesto, int numero_puesto, Tarifa id_tarifa, Mercado id_mercado) {
         this.id_puesto = id_puesto;
         this.numero_puesto = numero_puesto;
-        this.Tarifa = Tarifa;
-        this.Mercado = Mercado;
+        this.id_tarifa = id_tarifa;
+        this.id_mercado = id_mercado;
     }
 
     /**
@@ -44,44 +44,46 @@ public class Puesto {
     /**
      * @return the numero_puesto
      */
-    public String getNumero_puesto() {
+    public int getNumero_puesto() {
         return numero_puesto;
     }
 
     /**
      * @param numero_puesto the numero_puesto to set
      */
-    public void setNumero_puesto(String numero_puesto) {
+    public void setNumero_puesto(int numero_puesto) {
         this.numero_puesto = numero_puesto;
     }
 
     /**
-     * @return the Tarifa
+     * @return the id_tarifa
      */
-    public Tarifa getTarifa() {
-        return Tarifa;
+    public Tarifa getId_tarifa() {
+        return id_tarifa;
     }
 
     /**
-     * @param Tarifa the Tarifa to set
+     * @param id_tarifa the id_tarifa to set
      */
-    public void setTarifa(Tarifa Tarifa) {
-        this.Tarifa = Tarifa;
+    public void setId_tarifa(Tarifa id_tarifa) {
+        this.id_tarifa = id_tarifa;
     }
 
     /**
-     * @return the Mercado
+     * @return the id_mercado
      */
-    public Mercado getMercado() {
-        return Mercado;
+    public Mercado getId_mercado() {
+        return id_mercado;
     }
 
     /**
-     * @param Mercado the Mercado to set
+     * @param id_mercado the id_mercado to set
      */
-    public void setMercado(Mercado Mercado) {
-        this.Mercado = Mercado;
+    public void setId_mercado(Mercado id_mercado) {
+        this.id_mercado = id_mercado;
     }
     
+
+   
     
 }
