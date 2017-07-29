@@ -12,22 +12,22 @@ package mercado.modelo.entidades;
 public class Comerciante {
 
     private int id_comerciante;
+    private String tipo_identificador;
     private String identificador;
-    private int tipo_identificador;
     private String nombres_c;
     private String apellidos_c;
     private String direccion_c;
     private String correo_c;
-    private int conadis;
+    private String conadis;
     private String telefono;
 
     public Comerciante() {
     }
 
-    public Comerciante(int id_comerciante, String identificador, int tipo_identificador, String nombres_c, String apellidos_c, String direccion_c, String correo_c, int conadis, String telefono) {
+    public Comerciante(int id_comerciante,String tipo_identificador,String identificador, String nombres_c, String apellidos_c, String direccion_c, String correo_c, String conadis, String telefono) {
         this.id_comerciante = id_comerciante;
-        this.identificador = identificador;
         this.tipo_identificador = tipo_identificador;
+        this.identificador = identificador;
         this.nombres_c = nombres_c;
         this.apellidos_c = apellidos_c;
         this.direccion_c = direccion_c;
@@ -50,6 +50,21 @@ public class Comerciante {
     public void setId_comerciante(int id_comerciante) {
         this.id_comerciante = id_comerciante;
     }
+    
+    
+    /**
+     * @return the tipo_identificador
+     */
+    public String getTipo_identificador() {
+        return tipo_identificador;
+    }
+
+    /**
+     * @param tipo_identificador the tipo_identificador to set
+     */
+    public void setTipo_identificador(String tipo_identificador) {
+        this.tipo_identificador = tipo_identificador;
+    }
 
     /**
      * @return the identificador
@@ -63,20 +78,6 @@ public class Comerciante {
      */
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
-    }
-
-    /**
-     * @return the tipo_identificador
-     */
-    public int getTipo_identificador() {
-        return tipo_identificador;
-    }
-
-    /**
-     * @param tipo_identificador the tipo_identificador to set
-     */
-    public void setTipo_identificador(int tipo_identificador) {
-        this.tipo_identificador = tipo_identificador;
     }
 
     /**
@@ -138,14 +139,14 @@ public class Comerciante {
     /**
      * @return the conadis
      */
-    public int getConadis() {
+    public String getConadis() {
         return conadis;
     }
 
     /**
      * @param conadis the conadis to set
      */
-    public void setConadis(int conadis) {
+    public void setConadis(String conadis) {
         this.conadis = conadis;
     }
 
