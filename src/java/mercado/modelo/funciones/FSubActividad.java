@@ -53,4 +53,75 @@ public class FSubActividad {
         }
         return lst;
     }
+    
+        public static String insertarSubActividad(SubActividad subactividad) throws Exception {
+        String res;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "select * from f_insertar_sub_actividad(?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setString(1, subactividad.getSubActividad());
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            if (resultSet.next()) {
+                res = resultSet.getString(1);
+                return res;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+     public static String actualizarSubActividad(SubActividad subactividad) throws Exception {
+        String res;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "select * from f_actualizar_sub_actividad(?,?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setInt(1, subactividad.getIdSubActividad());
+            prstm.setString(2, subactividad.getSubActividad());
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            if (resultSet.next()) {
+                res = resultSet.getString(1);
+                return res;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+        public static String eliminarSubActividad(SubActividad subactividad) throws Exception {
+        String res;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "select * from f_eliminar_sub_actividad(?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setInt(1, subactividad.getIdSubActividad());
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            if (resultSet.next()) {
+                res = resultSet.getString(1);
+                return res;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+     
 }
