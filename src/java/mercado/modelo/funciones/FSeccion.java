@@ -97,4 +97,53 @@ public class FSeccion {
         return lst;
     }
     
+    public static String actualizarSeccion(Seccion seccion) throws Exception {
+        String res;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "select * from f_actualizar_seccion(?,?,?,?,?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setInt(1, seccion.getIdSeccion());
+            prstm.setString(2, seccion.getNombre_seccion());
+            prstm.setString(3, seccion.getEstado());
+            prstm.setDouble(4, seccion.getArea());
+            prstm.setString(5, seccion.getDimension());
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            if (resultSet.next()) {
+                res = resultSet.getString(1);
+                return res;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+        public static String eliminarSeccion(Seccion seccion) throws Exception {
+        String res;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "select * from f_eliminar_seccion(?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setInt(1, seccion.getIdSeccion());
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            if (resultSet.next()) {
+                res = resultSet.getString(1);
+                return res;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }

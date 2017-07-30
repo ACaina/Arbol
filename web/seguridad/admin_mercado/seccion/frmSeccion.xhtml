@@ -51,27 +51,28 @@
                             <p:column headerText="Dimension">
                                 <h:outputText value="#{seccion.dimension}"/>
                             </p:column>
-                            <!--<p:column headerText="Editar" width="10%" style="text-align: center">
+                            <p:column headerText="Editar" width="10%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-pencil"
                                                  title="Editar" 
-                                                 onclick="PF('dlgEditarActividad').show()"
-                                                 update="frmEditarActividad">
-                                    <f:setPropertyActionListener value="#{actividad}" target="#{controladorActividad.actividadSel}"/>
+                                                 onclick="PF('dlgEditarSeccion').show()"
+                                                 update="frmEditarSeccion">
+                                    <f:setPropertyActionListener value="#{seccion}" target="#{controladorSeccion.seccionSel}"/>
                                 </p:commandButton>
                             </p:column>
+
                             <p:column headerText="Eliminar" width="10%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-delete-forever"
                                                  title="Eliminar"
-                                                 onclick="PF('dlgEliminarActividad').show()"
-                                                 update="frmEliminarActividad">
-                                    <f:setPropertyActionListener value="#{actividad}" target="#{controladorActividad.actividadSel}"/>   
+                                                 onclick="PF('dlgEliminarSeccion').show()"
+                                                 update="frmEliminarSeccion">
+                                    <f:setPropertyActionListener value="#{seccion}" target="#{controladorSeccion.seccionSel}"/>   
                                 </p:commandButton>
-                            </p:column>-->
+                            </p:column>
                             <f:facet name="footer">
-                                <!-- <p:commandButton value="Nueva actividad"
-                                                  icon="ui-icon-plus"
-                                                  onclick="PF('dlgInsertarActividad').show()"
-                                                  update="frmInsertarActividad"/>-->
+                                <p:commandButton value="Nueva seccion"
+                                                 icon="ui-icon-plus"
+                                                 onclick="PF('dlgInsertarSeccion').show()"
+                                                 update="frmInsertarSeccion"/>
                             </f:facet>
                         </p:dataTable>
 
@@ -82,8 +83,10 @@
         </div>
 
         <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="true" header="Procesando">
-            <img src="../../resources/gifs/Loading.gif" alt=""/>                        
+            <img src="../../../resources/gifs/Loading.gif" alt=""/>                        
         </p:dialog>   
-
+        <ui:include src="frmInsertarSeccion.xhtml"/>
+        <ui:include src="frmEditarSeccion.xhtml"/>
+        <ui:include src="frmEliminarSeccion.xhtml"/>
     </ui:define>
 </ui:composition>
