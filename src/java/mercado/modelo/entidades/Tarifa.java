@@ -2,8 +2,8 @@ package mercado.modelo.entidades;
 
 public class Tarifa {
     
-private int idTarifa;
-    private String valor_tarifa;
+    private int idTarifa;
+    private Double valor_tarifa;
     private Seccion idSeccion;
     private Tpuesto id_tipo_puesto;
 
@@ -12,7 +12,7 @@ private int idTarifa;
         id_tipo_puesto=new Tpuesto();
     }
 
-    public Tarifa(int idTarifa, String valor_tarifa, Seccion idSeccion, Tpuesto id_tipo_puesto) {
+    public Tarifa(int idTarifa, Double valor_tarifa, Seccion idSeccion, Tpuesto id_tipo_puesto) {
         this.idTarifa = idTarifa;
         this.valor_tarifa = valor_tarifa;
         this.idSeccion = idSeccion;
@@ -27,11 +27,11 @@ private int idTarifa;
         this.idTarifa = idTarifa;
     }
 
-    public String getValor_tarifa() {
+    public Double getValor_tarifa() {
         return valor_tarifa;
     }
 
-    public void setValor_tarifa(String valor_tarifa) {
+    public void setValor_tarifa(Double valor_tarifa) {
         this.valor_tarifa = valor_tarifa;
     }
 

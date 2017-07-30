@@ -41,7 +41,7 @@ public class FSeccion {
         }
         return lst;
     }
-    
+
     public static String insertarSesion(Seccion seccion) throws Exception {
         String res;
         AccesoDatos accesoDatos;
@@ -68,7 +68,6 @@ public class FSeccion {
         }
     }
 
-    
     public static ArrayList<Seccion> obtenerSeccionesDadoEstado(String estado) throws Exception {
         ArrayList<Seccion> lst = new ArrayList<>();
         Seccion seccion;
@@ -96,7 +95,7 @@ public class FSeccion {
         }
         return lst;
     }
-    
+
     public static String actualizarSeccion(Seccion seccion) throws Exception {
         String res;
         AccesoDatos accesoDatos;
@@ -123,8 +122,8 @@ public class FSeccion {
             throw e;
         }
     }
-    
-        public static String eliminarSeccion(Seccion seccion) throws Exception {
+
+    public static String eliminarSeccion(Seccion seccion) throws Exception {
         String res;
         AccesoDatos accesoDatos;
         String sql;
@@ -145,5 +144,32 @@ public class FSeccion {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    public static Seccion obtenerSeccionDadoCodigo(int codigo) throws Exception {
+        Seccion seccion = null;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "SELECT * FROM f_seleccionar_seccion_dado_id(?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setInt(1, codigo);
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            while (resultSet.next()) {
+                seccion = new Seccion();
+                seccion.setIdSeccion(resultSet.getInt("id_seccion"));
+                seccion.setNombre_seccion(resultSet.getString("nombre_seccion"));
+                seccion.setEstado(resultSet.getString("estado"));
+                seccion.setArea(resultSet.getDouble("area"));
+                seccion.setDimension(resultSet.getString("dimension"));
+            }
+            accesoDatos.desconectar();
+        } catch (Exception e) {
+            throw e;
+        }
+        return seccion;
     }
 }

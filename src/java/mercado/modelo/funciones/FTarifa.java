@@ -6,6 +6,7 @@
 package mercado.modelo.funciones;
 
 import accesoDatos.AccesoDatos;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import mercado.modelo.entidades.Tarifa;
@@ -24,16 +25,15 @@ public class FTarifa {
         String consulta;
         try {
             accesoDatos = new AccesoDatos();
-            consulta = "select * from ";
+            consulta = "select * from f_seleccionar_tarifa()";
             resultSet = accesoDatos.ejecutaQuery(consulta);
             while (resultSet.next()) {
-                seccion = new Seccion();
-                seccion.setIdSeccion(resultSet.getInt("id_seccion"));
-                seccion.setNombre_seccion(resultSet.getString("nombre_seccion"));
-                seccion.setEstado(resultSet.getString("estado"));
-                seccion.setArea(resultSet.getDouble("area"));
-                seccion.setDimension(resultSet.getString("dimension"));
-                lst.add(seccion);
+                tarifa = new Tarifa();
+                tarifa.setIdTarifa(resultSet.getInt("idTarifa"));
+                tarifa.setValor_tarifa(resultSet.getDouble("valor_tarifa"));
+                tarifa.setIdSeccion(FSeccion.obtenerSeccionDadoCodigo(resultSet.getInt("idSeccion")));
+                tarifa.setId_tipo_puesto(FTipoPuesto.obtenerTpuestoDadoCodigo(resultSet.getInt("id_tipo_puesto")));
+                lst.add(tarifa);
             }
         } catch (Exception e) {
             throw e;
@@ -41,7 +41,7 @@ public class FTarifa {
         return lst;
     }
 
-    public static String insertarSesion(Seccion seccion) throws Exception {
+    public static String insertarTarifa(Tarifa tarifa) throws Exception {
         String res;
         AccesoDatos accesoDatos;
         String sql;
@@ -49,12 +49,13 @@ public class FTarifa {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * from f_insertar_seccion(?,?,?,?)";
+            sql = "select * from f_insertar_tarifa(?,?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setString(1, seccion.getNombre_seccion());
-            prstm.setString(2, seccion.getEstado());
-            prstm.setDouble(3, seccion.getArea());
-            prstm.setString(4, seccion.getDimension());
+            prstm.setDouble(1, tarifa.getValor_tarifa());
+            prstm.setInt(2, tarifa.getIdSeccion().getIdSeccion());
+            //prstm.setString(2, tarifa.getIdSeccion().getNombre_seccion());
+            //prstm.setInt(3,tarifa.getId_tipo_puesto().getDescripcion_tipo_puesto());
+            prstm.setInt(3, tarifa.getId_tipo_puesto().getId_tipo_puesto());
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             if (resultSet.next()) {
                 res = resultSet.getString(1);
@@ -67,35 +68,34 @@ public class FTarifa {
         }
     }
 
-    public static ArrayList<Seccion> obtenerSeccionesDadoEstado(String estado) throws Exception {
-        ArrayList<Seccion> lst = new ArrayList<>();
-        Seccion seccion;
+    public static ArrayList<Tarifa> obtenerTarifaDadoId(int id) throws Exception {
+        ArrayList<Tarifa> lst = new ArrayList<>();
+        Tarifa tarifa;
         AccesoDatos accesoDatos;
         String sql;
         PreparedStatement prstm;
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * from f_buscar_secciones(?)";
+            sql = "select * from f_seleccionar_tarifa_dado_id(?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setString(1, estado);
+            prstm.setInt(1, id);
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             while (resultSet.next()) {
-                seccion = new Seccion();
-                seccion.setIdSeccion(resultSet.getInt("id_seccion"));
-                seccion.setNombre_seccion(resultSet.getString("nombre_seccion"));
-                seccion.setEstado(resultSet.getString("estado"));
-                seccion.setArea(resultSet.getDouble("area"));
-                seccion.setDimension(resultSet.getString("dimension"));
-                lst.add(seccion);
+                tarifa = new Tarifa();
+                tarifa.setIdTarifa(resultSet.getInt("idTarifa"));
+                tarifa.setValor_tarifa(resultSet.getDouble("valor_tarifa"));
+                tarifa.setIdSeccion(FSeccion.obtenerSeccionDadoCodigo(resultSet.getInt("idSeccion")));
+                tarifa.setId_tipo_puesto(FTipoPuesto.obtenerTpuestoDadoCodigo(resultSet.getInt("id_tipo_puesto")));
             }
+            accesoDatos.desconectar();
         } catch (Exception e) {
             throw e;
         }
         return lst;
     }
 
-    public static String actualizarSeccion(Seccion seccion) throws Exception {
+    public static String actualizarTarifa(Tarifa tarifa) throws Exception {
         String res;
         AccesoDatos accesoDatos;
         String sql;
@@ -103,13 +103,14 @@ public class FTarifa {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * from f_actualizar_seccion(?,?,?,?,?)";
+            sql = "select * from f_actualizar_tarifa((?,?,?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setInt(1, seccion.getIdSeccion());
-            prstm.setString(2, seccion.getNombre_seccion());
-            prstm.setString(3, seccion.getEstado());
-            prstm.setDouble(4, seccion.getArea());
-            prstm.setString(5, seccion.getDimension());
+            prstm.setInt(1, tarifa.getIdTarifa());
+            prstm.setDouble(2, tarifa.getValor_tarifa());
+            prstm.setInt(3, tarifa.getIdSeccion().getIdSeccion());
+            //prstm.setString(2, tarifa.getIdSeccion().getNombre_seccion());
+            //prstm.setInt(3,tarifa.getId_tipo_puesto().getDescripcion_tipo_puesto());
+            prstm.setInt(4, tarifa.getId_tipo_puesto().getId_tipo_puesto());
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             if (resultSet.next()) {
                 res = resultSet.getString(1);
@@ -122,7 +123,7 @@ public class FTarifa {
         }
     }
 
-    public static String eliminarSeccion(Seccion seccion) throws Exception {
+    public static String eliminarTarifa(Tarifa tarifa) throws Exception {
         String res;
         AccesoDatos accesoDatos;
         String sql;
@@ -130,9 +131,9 @@ public class FTarifa {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * from f_eliminar_seccion(?)";
+            sql = "select * from f_eliminar_tarifa(?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setInt(1, seccion.getIdSeccion());
+            prstm.setInt(1, tarifa.getIdTarifa());
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             if (resultSet.next()) {
                 res = resultSet.getString(1);
