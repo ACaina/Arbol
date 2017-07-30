@@ -119,7 +119,7 @@ public class FTipoPuesto {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * f_eliminar_tipo_puesto(?)";
+            sql = "select * from f_eliminar_tipo_puesto(?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
             prstm.setInt(1, tpuesto.getId_tipo_puesto());
             resultSet = accesoDatos.ejecutaPrepared(prstm);
@@ -133,5 +133,7 @@ public class FTipoPuesto {
             throw e;
         }
     }
+    
+    
 
 }
