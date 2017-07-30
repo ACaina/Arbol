@@ -9,6 +9,7 @@ import accesoDatos.AccesoDatos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import mercado.modelo.entidades.Actividad;
 import mercado.modelo.entidades.Mercado;
 
 /**
@@ -17,6 +18,31 @@ import mercado.modelo.entidades.Mercado;
  */
 public class FMercado {
 
+            public static Mercado obtenerMercadoDadoCodigo(int codigo) throws Exception {
+        Mercado mercado = null;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "select * from f_seleccionar_mercado_dado_id(?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setInt(1, codigo);
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            while (resultSet.next()) {
+                mercado = new Mercado();
+                mercado.setId_mercado(resultSet.getInt("id_mercado"));
+                mercado.setNombre_mercado(resultSet.getString("nombre_mercado"));
+                mercado.setEstado(resultSet.getString("estado"));
+            }
+            accesoDatos.desconectar();
+        } catch (Exception e) {
+            throw e;
+        }
+        return mercado;
+    }
+    
     public static ArrayList<Mercado> obtenerMercados() throws Exception {
         ArrayList<Mercado> lst = new ArrayList<>();
         AccesoDatos accesoDatos;
