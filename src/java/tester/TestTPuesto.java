@@ -5,16 +5,15 @@
  */
 package tester;
 
-import accesoDatos.AccesoDatos;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import mercado.modelo.entidades.Tpuesto;
 import mercado.modelo.funciones.FTipoPuesto;
 
 /**
  *
- * @author Geovanny
+ * @author ♥ Erika
  */
+
 public class TestTPuesto {
 
     /**
@@ -31,7 +30,7 @@ public class TestTPuesto {
         
         
         
-         ArrayList<Tpuesto> lst = FTipoPuesto.obtenerTpuesto();
+         ArrayList<Tpuesto> lst = FTipoPuesto.obtenerTpuestos();
         try {
             for(int i=0;i<lst.size();i++){
                 System.out.println("\n\nTipo Puesto: "+lst.get(i).getDescripcion_tipo_puesto()

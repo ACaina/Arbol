@@ -41,7 +41,7 @@ public class FTipoPuesto {
         return tpuesto;
     }
     
-    public static ArrayList<Tpuesto> obtenerTpuesto() throws Exception {
+    public static ArrayList<Tpuesto> obtenerTpuestos() throws Exception {
         ArrayList<Tpuesto> lst = new ArrayList<>();
         AccesoDatos accesoDatos;
         Tpuesto tpuesto;
@@ -133,7 +133,4 @@ public class FTipoPuesto {
             throw e;
         }
     }
-    
-    
-
 }
