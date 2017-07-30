@@ -5,6 +5,7 @@
  */
 package mercado.controladores;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -21,13 +22,13 @@ import recursos.Util;
  */
 @ManagedBean
 @ViewScoped
-public class ControladorSeccion {
+public class ControladorSeccion implements Serializable{
 
     private ArrayList<Seccion> lstSecciones;
     private Seccion seccionSel;
     private Seccion objSeccion;
     private String estado;
-    private int id;
+//    private int id;
     private String msgBD;
 
     public ControladorSeccion() {
@@ -146,18 +147,18 @@ public class ControladorSeccion {
         this.objSeccion = objSeccion;
     }
 
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
+//    /**
+//     * @return the id
+//     */
+//    public int getId() {
+//        return id;
+//    }
+//
+//    /**
+//     * @param id the id to set
+//     */
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
 }

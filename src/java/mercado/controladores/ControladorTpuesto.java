@@ -5,6 +5,7 @@
  */
 package mercado.controladores;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -21,7 +22,7 @@ import recursos.Util;
  */
 @ManagedBean
 @ViewScoped
-public class ControladorTpuesto {
+public class ControladorTpuesto implements Serializable{
 
     private ArrayList<Tpuesto> lstTpuesto;
     private Tpuesto tpuestoSel;

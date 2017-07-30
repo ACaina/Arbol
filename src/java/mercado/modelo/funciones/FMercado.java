@@ -64,7 +64,7 @@ public class FMercado {
         }
     }
 
-    public static String actualizarSeccion(Mercado mercado) throws Exception {
+    public static String actualizarMercado(Mercado mercado) throws Exception {
         String res;
         AccesoDatos accesoDatos;
         String sql;
