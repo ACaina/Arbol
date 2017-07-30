@@ -38,7 +38,7 @@ public class ControladorTpuesto implements Serializable{
 
     public void obtenerTpuesto() {
         try {
-            lstTpuesto = FTipoPuesto.obtenerTpuesto();
+            lstTpuesto = FTipoPuesto.obtenerTpuestos();
             System.out.println("Muestra secciones ");
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
