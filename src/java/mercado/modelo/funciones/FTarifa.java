@@ -6,26 +6,25 @@
 package mercado.modelo.funciones;
 
 import accesoDatos.AccesoDatos;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import mercado.modelo.entidades.Seccion;
+import mercado.modelo.entidades.Tarifa;
 
 /**
  *
- * @author caina
+ * @author ♥ Erika
  */
-public class FSeccion {
+public class FTarifa {
 
-    public static ArrayList<Seccion> obtenerSecciones() throws Exception {
-        ArrayList<Seccion> lst = new ArrayList<>();
+    public static ArrayList<Tarifa> obtenerTarifas() throws Exception {
+        ArrayList<Tarifa> lst = new ArrayList<>();
         AccesoDatos accesoDatos;
-        Seccion seccion;
+        Tarifa tarifa;
         ResultSet resultSet;
         String consulta;
         try {
             accesoDatos = new AccesoDatos();
-            consulta = "select * from f_seleccionar_seccion()";
+            consulta = "select * from ";
             resultSet = accesoDatos.ejecutaQuery(consulta);
             while (resultSet.next()) {
                 seccion = new Seccion();
@@ -41,7 +40,7 @@ public class FSeccion {
         }
         return lst;
     }
-    
+
     public static String insertarSesion(Seccion seccion) throws Exception {
         String res;
         AccesoDatos accesoDatos;
@@ -68,7 +67,6 @@ public class FSeccion {
         }
     }
 
-    
     public static ArrayList<Seccion> obtenerSeccionesDadoEstado(String estado) throws Exception {
         ArrayList<Seccion> lst = new ArrayList<>();
         Seccion seccion;
@@ -96,7 +94,7 @@ public class FSeccion {
         }
         return lst;
     }
-    
+
     public static String actualizarSeccion(Seccion seccion) throws Exception {
         String res;
         AccesoDatos accesoDatos;
@@ -123,8 +121,8 @@ public class FSeccion {
             throw e;
         }
     }
-    
-        public static String eliminarSeccion(Seccion seccion) throws Exception {
+
+    public static String eliminarSeccion(Seccion seccion) throws Exception {
         String res;
         AccesoDatos accesoDatos;
         String sql;
@@ -146,4 +144,5 @@ public class FSeccion {
             throw e;
         }
     }
+
 }
