@@ -33,7 +33,7 @@ public class FPuesto {
             while (resultSet.next()) {
                 puesto = new Puesto();
                 puesto.setId_puesto(resultSet.getInt("id_puesto"));
-                puesto.setNumero_puesto(resultSet.getInt("numero_puesto"));
+                puesto.setNumero_puesto(resultSet.getString("numero_puesto"));
                 puesto.setId_tarifa(null);
                 puesto.setId_mercado(FMercado.obtenerMercadoDadoCodigo(resultSet.getInt("id_mercado")));
             }
@@ -58,7 +58,7 @@ public class FPuesto {
             while (resultSet.next()) {
                 puesto = new Puesto();
                 puesto.setId_puesto(resultSet.getInt("id_puesto"));
-                puesto.setNumero_puesto(resultSet.getInt("numero_puesto"));
+                puesto.setNumero_puesto(resultSet.getString("numero_puesto"));
                 puesto.setId_tarifa(null);
                 puesto.setId_mercado(FMercado.obtenerMercadoDadoCodigo(resultSet.getInt("id_mercado")));
             }
@@ -78,7 +78,7 @@ public class FPuesto {
             accesoDatos = new AccesoDatos();
             sql = "select * from f_insertar_puesto(?,?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setInt(1, puesto.getNumero_puesto());
+            prstm.setString(1, puesto.getNumero_puesto());
             prstm.setInt(2, puesto.getId_tarifa().getIdTarifa());
             prstm.setInt(3, puesto.getId_mercado().getId_mercado());
             resultSet = accesoDatos.ejecutaPrepared(prstm);
@@ -103,7 +103,7 @@ public class FPuesto {
             accesoDatos = new AccesoDatos();
             sql = "select * from f_actualizar_puesto(?,?,?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setInt(1, puesto.getNumero_puesto());
+            prstm.setString(1, puesto.getNumero_puesto());
             prstm.setInt(2, puesto.getId_tarifa().getIdTarifa());
             prstm.setInt(3, puesto.getId_mercado().getId_mercado());
             prstm.setInt(4,puesto.getId_puesto());

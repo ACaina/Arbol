@@ -11,7 +11,7 @@ package mercado.modelo.entidades;
  */
 public class Puesto {
     private int id_puesto;
-    private int numero_puesto;
+    private String numero_puesto;
     private Tarifa id_tarifa;
     private Mercado id_mercado;
 
@@ -20,7 +20,7 @@ public class Puesto {
         id_mercado = new Mercado();
     }
 
-    public Puesto(int id_puesto, int numero_puesto, Tarifa id_tarifa, Mercado id_mercado) {
+    public Puesto(int id_puesto, String numero_puesto, Tarifa id_tarifa, Mercado id_mercado) {
         this.id_puesto = id_puesto;
         this.numero_puesto = numero_puesto;
         this.id_tarifa = id_tarifa;
@@ -44,17 +44,23 @@ public class Puesto {
     /**
      * @return the numero_puesto
      */
-    public int getNumero_puesto() {
+//    public int getNumero_puesto() {
+//        return numero_puesto;
+//    }
+//
+//    /**
+//     * @param numero_puesto the numero_puesto to set
+//     */
+//    public void setNumero_puesto(int numero_puesto) {
+//        this.numero_puesto = numero_puesto;
+//    }
+public String getNumero_puesto() {
         return numero_puesto;
     }
 
-    /**
-     * @param numero_puesto the numero_puesto to set
-     */
-    public void setNumero_puesto(int numero_puesto) {
+    public void setNumero_puesto(String numero_puesto) {
         this.numero_puesto = numero_puesto;
     }
-
     /**
      * @return the id_tarifa
      */
