@@ -34,7 +34,7 @@ public class FPuesto {
                 puesto = new Puesto();
                 puesto.setId_puesto(resultSet.getInt("id_puesto"));
                 puesto.setNumero_puesto(resultSet.getString("numero_puesto"));
-                puesto.setId_tarifa(null);
+                puesto.setId_tarifa(FTarifa.obtenerTarifaDadoId(resultSet.getInt("id_tarifa")));
                 puesto.setId_mercado(FMercado.obtenerMercadoDadoCodigo(resultSet.getInt("id_mercado")));
             }
             accesoDatos.desconectar();
@@ -51,16 +51,19 @@ public class FPuesto {
         Puesto puesto;
         ResultSet resultSet;
         String consulta;
+        System.out.println("EntraFuncionobtener");
         try {
             accesoDatos = new AccesoDatos();
-            consulta = "select* from f_seleccionar_puesto()";
+            consulta = "select * from f_seleccionar_puesto()";
             resultSet = accesoDatos.ejecutaQuery(consulta);
             while (resultSet.next()) {
                 puesto = new Puesto();
                 puesto.setId_puesto(resultSet.getInt("id_puesto"));
                 puesto.setNumero_puesto(resultSet.getString("numero_puesto"));
-                puesto.setId_tarifa(null);
+                puesto.setId_tarifa(FTarifa.obtenerTarifaDadoId(resultSet.getInt("id_tarifa")));
                 puesto.setId_mercado(FMercado.obtenerMercadoDadoCodigo(resultSet.getInt("id_mercado")));
+                lst.add(puesto);
+                System.out.println("obtiene");
             }
         } catch (Exception e) {
             throw e;

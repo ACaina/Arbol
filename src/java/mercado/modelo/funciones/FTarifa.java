@@ -29,9 +29,9 @@ public class FTarifa {
             resultSet = accesoDatos.ejecutaQuery(consulta);
             while (resultSet.next()) {
                 tarifa = new Tarifa();
-                tarifa.setIdTarifa(resultSet.getInt("idTarifa"));
+                tarifa.setIdTarifa(resultSet.getInt("id_tarifa"));
                 tarifa.setValor_tarifa(resultSet.getDouble("valor_tarifa"));
-                tarifa.setIdSeccion(FSeccion.obtenerSeccionDadoCodigo(resultSet.getInt("idSeccion")));
+                tarifa.setIdSeccion(FSeccion.obtenerSeccionDadoCodigo(resultSet.getInt("id_seccion")));
                 tarifa.setId_tipo_puesto(FTipoPuesto.obtenerTpuestoDadoCodigo(resultSet.getInt("id_tipo_puesto")));
                 lst.add(tarifa);
             }
@@ -68,13 +68,13 @@ public class FTarifa {
         }
     }
 
-    public static ArrayList<Tarifa> obtenerTarifaDadoId(int id) throws Exception {
-        ArrayList<Tarifa> lst = new ArrayList<>();
-        Tarifa tarifa;
+    public static Tarifa obtenerTarifaDadoId(int id) throws Exception {
+        Tarifa tarifa=null;
         AccesoDatos accesoDatos;
         String sql;
         PreparedStatement prstm;
         ResultSet resultSet;
+        
         try {
             accesoDatos = new AccesoDatos();
             sql = "select * from f_seleccionar_tarifa_dado_id(?)";
@@ -83,16 +83,16 @@ public class FTarifa {
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             while (resultSet.next()) {
                 tarifa = new Tarifa();
-                tarifa.setIdTarifa(resultSet.getInt("idTarifa"));
+                tarifa.setIdTarifa(resultSet.getInt("id_tarifa"));
                 tarifa.setValor_tarifa(resultSet.getDouble("valor_tarifa"));
-                tarifa.setIdSeccion(FSeccion.obtenerSeccionDadoCodigo(resultSet.getInt("idSeccion")));
+                tarifa.setIdSeccion(FSeccion.obtenerSeccionDadoCodigo(resultSet.getInt("id_seccion")));
                 tarifa.setId_tipo_puesto(FTipoPuesto.obtenerTpuestoDadoCodigo(resultSet.getInt("id_tipo_puesto")));
             }
             accesoDatos.desconectar();
         } catch (Exception e) {
             throw e;
         }
-        return lst;
+        return tarifa;
     }
 
     public static String actualizarTarifa(Tarifa tarifa) throws Exception {

@@ -52,8 +52,8 @@ public class ControladorTpuesto implements Serializable{
             objTpuesto = new Tpuesto();
             obtenerTpuesto();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblTpuesto");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarTpuesto').hide()");
+            resetearFitrosTabla("frmPrincipal:tblPuesto");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarPuesto').hide()");
         } catch (Exception e) {
 
             Util.addErrorMessage(e.getMessage());
@@ -66,8 +66,8 @@ public class ControladorTpuesto implements Serializable{
             tpuestoSel = new Tpuesto();
             obtenerTpuesto();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblTpuesto");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarTpuesto').hide()");
+            resetearFitrosTabla("frmPrincipal:tblPuesto");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarPuesto').hide()");
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
@@ -79,8 +79,8 @@ public class ControladorTpuesto implements Serializable{
             tpuestoSel = new Tpuesto();
             obtenerTpuesto();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblTpuesto");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEliminarTpuesto').hide()");
+            resetearFitrosTabla("frmPrincipal:tblPuesto");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEliminarPuesto').hide()");
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
