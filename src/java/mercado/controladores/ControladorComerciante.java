@@ -22,30 +22,31 @@ import recursos.Util;
  */
 @ManagedBean
 @ViewScoped
-public class ControladorComerciante  implements Serializable {
-    private ArrayList<Comerciante> lstComerciante;;
+public class ControladorComerciante implements Serializable {
+
+    private ArrayList<Comerciante> lstComerciantes;
     private Comerciante objComerciante;
-    private Comerciante ComercianteSel;
+    private Comerciante comercianteSel;
     private String msgBD;
 
     public ControladorComerciante() {
         objComerciante = new Comerciante();
-        ComercianteSel = new Comerciante();
+        comercianteSel = new Comerciante();
         obtenerComerciante();
     }
-    
+
     public void obtenerComerciante() {
         try {
-            lstComerciante = FComerciante.obtenerComerciantes();
-            System.out.println("Muestra Comerciantes ");
+            lstComerciantes = FComerciante.obtenerComerciantes();
+            System.out.println("total Comerciantes: "+lstComerciantes.size());
         } catch (Exception e) {
+            System.out.println("public void obtenerComerciante() dice: "+e.getMessage());
             Util.addErrorMessage(e.getMessage());
         }
     }
-    
+
     public void insertar() {
         try {
-            System.out.println("Ingresa Comerciante");
             msgBD = FComerciante.insertarComerciante(objComerciante);
             objComerciante = new Comerciante();
             obtenerComerciante();
@@ -53,15 +54,14 @@ public class ControladorComerciante  implements Serializable {
             resetearFitrosTabla("frmPrincipal:tblComerciante");
             DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarComerciante').hide()");
         } catch (Exception e) {
-
             Util.addErrorMessage(e.getMessage());
         }
     }
 
     public void actualizar() {
         try {
-            msgBD = FComerciante.actualizarComerciante(ComercianteSel);
-            ComercianteSel = new Comerciante();
+            msgBD = FComerciante.actualizarComerciante(comercianteSel);
+            comercianteSel = new Comerciante();
             obtenerComerciante();
             Util.addSuccessMessage(msgBD);
             resetearFitrosTabla("frmPrincipal:tblComerciante");
@@ -71,10 +71,10 @@ public class ControladorComerciante  implements Serializable {
         }
     }
 
-    public void eliminar() {
+     public void eliminar() {
         try {
-            msgBD = FComerciante.eliminarComerciante(ComercianteSel);
-            ComercianteSel = new Comerciante();
+            msgBD = FComerciante.eliminarComerciante(comercianteSel);
+            comercianteSel = new Comerciante();
             obtenerComerciante();
             Util.addSuccessMessage(msgBD);
             resetearFitrosTabla("frmPrincipal:tblComerciante");
@@ -84,17 +84,10 @@ public class ControladorComerciante  implements Serializable {
         }
     }
 
+    
     public void resetearFitrosTabla(String id) {
         DataTable table = (DataTable) FacesContext.getCurrentInstance().getViewRoot().findComponent(id);
         table.reset();
-    }
-
-    public ArrayList<Comerciante> getLstComerciante() {
-        return lstComerciante;
-    }
-
-    public void setLstComerciante(ArrayList<Comerciante> lstComerciante) {
-        this.lstComerciante = lstComerciante;
     }
 
     public Comerciante getObjComerciante() {
@@ -106,13 +99,21 @@ public class ControladorComerciante  implements Serializable {
     }
 
     public Comerciante getComercianteSel() {
-        return ComercianteSel;
+        return comercianteSel;
     }
 
-    public void setComercianteSel(Comerciante ComercianteSel) {
-        this.ComercianteSel = ComercianteSel;
+    public void setComercianteSel(Comerciante comercianteSel) {
+        this.comercianteSel = comercianteSel;
     }
 
+    public ArrayList<Comerciante> getLstComerciante() {
+        return lstComerciantes;
+    }
+
+    public void setLstComerciante(ArrayList<Comerciante> lstComerciantes) {
+        this.lstComerciantes = lstComerciantes;
+    }
+   
     public String getMsgBD() {
         return msgBD;
     }
@@ -120,4 +121,5 @@ public class ControladorComerciante  implements Serializable {
     public void setMsgBD(String msgBD) {
         this.msgBD = msgBD;
     }
+
 }

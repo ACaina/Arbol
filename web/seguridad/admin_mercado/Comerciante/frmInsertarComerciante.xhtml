@@ -13,37 +13,43 @@
             <p:panel>
                 <h:panelGrid columns="8" >
                     <p:outputLabel value="Tipo Identificador: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.tipo_identificador}"
-                                     required="true"
-                                     requiredMessage="El nombre es obligatorio"/>
+                    <p:selectOneMenu id="cmdTIndent" value="#{controladorComerciante.objComerciante.tipo_identificador}" style="width:125px">
+                        <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                        <f:selectItem itemLabel="Cedula" itemValue="Cedula" />
+                        <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" />
+                    </p:selectOneMenu>
                     <p:outputLabel value="identificador: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.identificador}"
-                                     required="true"
-                                     requiredMessage="El estado es obligatorio"/>
+                                 required="true"
+                                 requiredMessage="El estado es obligatorio"/>
                     <p:outputLabel value="Nombres: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.nombres_c}"
-                                     required="true"
-                                     requiredMessage="El estado es obligatorio"/>
+                                 required="true"
+                                 requiredMessage="El estado es obligatorio"/>
                     <p:outputLabel value="Apellidos: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.apellidos_c}"
-                                     required="true"
-                                     requiredMessage="El estado es obligatorio"/>
+                                 required="true"
+                                 requiredMessage="El estado es obligatorio"/>
                     <p:outputLabel value="Direccion: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.direccion_c}"
-                                     required="true"
-                                     requiredMessage="El estado es obligatorio"/>
+                                 required="true"
+                                 requiredMessage="El estado es obligatorio"/>
                     <p:outputLabel value="Correo: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.correo_c}"
-                                     required="true"
-                                     requiredMessage="El estado es obligatorio"/>
+                                 required="true"
+                                 requiredMessage="El estado es obligatorio"/>
                     <p:outputLabel value="Conadis: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.conadis}"
-                                     required="true"
-                                     requiredMessage="El estado es obligatorio"/>
+                    <p:selectOneMenu id="cmbConadis" 
+                                     value="#{controladorComerciante.objComerciante.conadis}" 
+                                     effect="fold" required="false" >
+                        <f:selectItem itemLabel="--- Seleccione ---" itemValue="" />
+                        <f:selectItem itemLabel="Si" itemValue="Si" />
+                        <f:selectItem itemLabel="No" itemValue="No" />
+                    </p:selectOneMenu>
                     <p:outputLabel value="Telefono: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.telefono}"
-                                     required="true"
-                                     requiredMessage="El estado es obligatorio"/>
+                                 required="true"
+                                 requiredMessage="El estado es obligatorio"/>
                 </h:panelGrid>
             </p:panel>
 

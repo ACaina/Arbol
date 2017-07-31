@@ -11,37 +11,43 @@
         <h:form id="frmEditarComerciante">
             <h:panelGrid columns="8">
                 <p:outputLabel value="Tipo Identificador: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.tipo_identificador}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
-                    <p:outputLabel value="identificador: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.identificador}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
-                    <p:outputLabel value="Nombres: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.nombres_c}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
-                    <p:outputLabel value="Apellidos: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.apellidos_c}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
-                    <p:outputLabel value="Direccion: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.direccion_c}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
-                    <p:outputLabel value="Correo: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.correo_c}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
-                    <p:outputLabel value="Conadis: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.conadis}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
-                    <p:outputLabel value="Telefono: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.telefono}"
-                                     required="true"
-                                     requiredMessage="Obligatorio"/>
+                <p:selectOneMenu id="cmdTIndent" value="#{controladorComerciante.comercianteSel.tipo_identificador}" style="width:125px">
+                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                    <f:selectItem itemLabel="Cedula" itemValue="Cedula" />
+                    <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" />
+                </p:selectOneMenu>
+
+                <p:outputLabel value="identificador: "/>
+                <p:inputText value="#{controladorComerciante.comercianteSel.identificador}"
+                             required="true"
+                             requiredMessage="Identificador es obligatoria"/>
+                <p:outputLabel value="Nombres: "/>
+                <p:inputText value="#{controladorComerciante.comercianteSel.nombres_c}"
+                             required="true"
+                             requiredMessage="Nombres es Obligatorio"/>
+                <p:outputLabel value="Apellidos: "/>
+                <p:inputText value="#{controladorComerciante.comercianteSel.apellidos_c}"
+                             required="true"
+                             requiredMessage="Apellidos es Obligatorio"/>
+                <p:outputLabel value="Direccion: "/>
+                <p:inputText value="#{controladorComerciante.comercianteSel.direccion_c}"
+                             required="true"
+                             requiredMessage="Direccion es Obligatoria"/>
+                <p:outputLabel value="Correo: "/>
+                <p:inputText value="#{controladorComerciante.comercianteSel.correo_c}"
+                             required="false"/>
+                <p:outputLabel value="Conadis: "/>
+                <p:selectOneMenu id="cmbConadis" 
+                                 value="#{controladorComerciante.comercianteSel.conadis}" 
+                                 effect="fold" required="false" >
+                    <f:selectItem itemLabel="--- Seleccione ---" itemValue="" />
+                    <f:selectItem itemLabel="Si" itemValue="Si" />
+                    <f:selectItem itemLabel="No" itemValue="No" />
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Telefono: "/>
+                <p:inputText value="#{controladorComerciante.comercianteSel.telefono}"
+                             required="false"/>
             </h:panelGrid>
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"

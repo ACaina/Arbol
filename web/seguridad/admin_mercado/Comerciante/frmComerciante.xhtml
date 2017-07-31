@@ -25,28 +25,25 @@
                             <p:column headerText="Id Comerciante" width="10%">
                                 <h:outputText value="#{comerciante.id_comerciante}"/>
                             </p:column>
-                            <p:column headerText="tipo_identificador">
+                            <p:column headerText="Tipo Identificador">
                                 <h:outputText value="#{comerciante.tipo_identificador}"/>
                             </p:column>
-                            <p:column headerText="identificador">
-                                <h:outputText value="#{comerciante.identificador}"/>
-                            </p:column>
-                            <p:column headerText="nombres_c">
+                            <p:column headerText="Nombres">
                                 <h:outputText value="#{comerciante.nombres_c}"/>
                             </p:column>
-                            <p:column headerText="apellidos_c">
+                            <p:column headerText="Apellidos">
                                 <h:outputText value="#{comerciante.apellidos_c}"/>
                             </p:column>
-                            <p:column headerText="direccion_c">
+                            <p:column headerText="Direccion">
                                 <h:outputText value="#{comerciante.direccion_c}"/>
                             </p:column>
-                            <p:column headerText="correo_c">
+                            <p:column headerText="Correo">
                                 <h:outputText value="#{comerciante.correo_c}"/>
                             </p:column>
-                            <p:column headerText="conadis">
+                            <p:column headerText="Conadis">
                                 <h:outputText value="#{comerciante.conadis}"/>
                             </p:column>
-                            <p:column headerText="telefono">
+                            <p:column headerText="Telefono">
                                 <h:outputText value="#{comerciante.telefono}"/>
                             </p:column>
                             <p:column headerText="Editar" width="10%" style="text-align: center">
@@ -54,7 +51,7 @@
                                                  title="Editar" 
                                                  onclick="PF('dlgEditarComerciante').show()"
                                                  update="frmEditarComerciante">
-                                    <f:setPropertyActionListener value="#{comerciante}" target="#{ControladorComerciante.ComercianteSel}"/>
+                                    <f:setPropertyActionListener value="#{comerciante}" target="#{controladorComerciante.comercianteSel}"/>
                                 </p:commandButton>
                             </p:column>
                             <p:column headerText="Eliminar" width="10%" style="text-align: center">
@@ -62,7 +59,7 @@
                                                  title="Eliminar"
                                                  onclick="PF('dlgEliminarComerciante').show()"
                                                  update="frmEliminarComerciante">
-                                    <f:setPropertyActionListener value="#{comerciante}" target="#{controladorComerciante.ComercianteSel}"/>   
+                                    <f:setPropertyActionListener value="#{comerciante}" target="#{controladorComerciante.comercianteSel}"/>   
                                 </p:commandButton>
                             </p:column>
                             <f:facet name="footer">
