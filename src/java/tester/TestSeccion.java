@@ -6,8 +6,12 @@
 package tester;
 
 import java.util.ArrayList;
+import mercado.modelo.entidades.Puesto;
 import mercado.modelo.entidades.Seccion;
+import mercado.modelo.entidades.Tarifa;
+import mercado.modelo.funciones.FPuesto;
 import mercado.modelo.funciones.FSeccion;
+import mercado.modelo.funciones.FTarifa;
 
 /**
  *
@@ -15,14 +19,16 @@ import mercado.modelo.funciones.FSeccion;
  */
 public class TestSeccion {
     public static void main(String[] args) throws Exception {
-       ArrayList<Seccion> lst = FSeccion.obtenerSecciones();
+       ArrayList<Tarifa> lst = FTarifa.obtenerTarifas();
         try {
+            System.out.println("EntraFor");
+            System.out.println(lst.size());
             for(int i=0;i<lst.size();i++){
-                System.out.println("\n\nId: "+lst.get(i).getIdSeccion()
-                +"\n Nombre: "+lst.get(i).getNombre_seccion()
-                +"\n Estado "+lst.get(i).getEstado()
-                +"\n Area "+lst.get(i).getArea()
-                +"\n Area "+lst.get(i).getDimension()
+                
+                System.out.println("\n\nId: "+lst.get(i).getIdTarifa()
+                +"\n num: "+lst.get(i).getValor_tarifa()
+                +"\n Tarifa "+lst.get(i).getIdSeccion().getNombre_seccion()
+                +"\n Mercado "+lst.get(i).getId_tipo_puesto().getDescripcion_tipo_puesto()
                 );
             }
         } catch (Exception e) {

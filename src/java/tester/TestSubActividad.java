@@ -5,8 +5,12 @@
  */
 package tester;
 
+import mercado.modelo.entidades.Seccion;
 import mercado.modelo.entidades.SubActividad;
+import mercado.modelo.entidades.Tpuesto;
+import mercado.modelo.funciones.FSeccion;
 import mercado.modelo.funciones.FSubActividad;
+import mercado.modelo.funciones.FTipoPuesto;
 
 /**
  *
@@ -20,9 +24,11 @@ public class TestSubActividad {
     public static void main(String[] args) {
         try {
             
-            SubActividad sub = FSubActividad.obtenerSubActividadDadoCodigo(1);
-            System.out.println("\n Sub actividad: " + sub.getSubActividad()
-                    + "\n Id: " + sub.getIdSubActividad());
+           // SubActividad sub = FSubActividad.obtenerSubActividadDadoCodigo(1);
+            Tpuesto sub = FTipoPuesto.obtenerTpuestoDadoCodigo(1);
+            //Seccion sub =FSeccion.obtenerSeccionDadoCodigo(2);
+            System.out.println("\n Sub actividad: " + sub.getDescripcion_tipo_puesto()
+                    );
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
