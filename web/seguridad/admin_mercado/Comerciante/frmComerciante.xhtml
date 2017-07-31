@@ -17,13 +17,13 @@
                         <p:messages autoUpdate="true" showDetail="true"/>
                         <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /> 
 
-                        <p:dataTable id="tblcomerciante" value="#{controladorComerciante.lstComerciante}" var="comerciante" 
+                        <p:dataTable id="tblComerciante" value="#{controladorComerciante.lstComerciante}" var="comerciante" 
                                      reflow="true" rows="10" paginator="true"
                                      rowKey="#{comerciante.id_comerciante}"
-                                     selection="#{controladorComerciante.ComercianteSel}"
+                                     selection="#{controladorComerciante.comercianteSel}"
                                      selectionMode="single">
                             <p:column headerText="Id Comerciante" width="10%">
-                                <h:outputText value="#{comerciante.id_Comerciante}"/>
+                                <h:outputText value="#{comerciante.id_comerciante}"/>
                             </p:column>
                             <p:column headerText="tipo_identificador">
                                 <h:outputText value="#{comerciante.tipo_identificador}"/>
