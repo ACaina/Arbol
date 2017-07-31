@@ -12,8 +12,10 @@
             <p:messages autoUpdate="true"/>
             <p:panel>
                 <h:panelGrid columns="8" >
+
                     <p:outputLabel value="Tipo Identificador: "/>
-                    <p:selectOneMenu id="cmdTIndent" value="#{controladorComerciante.objComerciante.tipo_identificador}" style="width:125px">
+                    <p:selectOneMenu id="cmdTIndent" value="#{controladorComerciante.objComerciante.tipo_identificador}" style="width:125px" required="true"
+                                 requiredMessage="Tipo Identificador es obligatorio">
                         <f:selectItem itemLabel="--Seleccione--" itemValue="" />
                         <f:selectItem itemLabel="Cedula" itemValue="Cedula" />
                         <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" />
@@ -21,35 +23,31 @@
                     <p:outputLabel value="identificador: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.identificador}"
                                  required="true"
-                                 requiredMessage="El estado es obligatorio"/>
+                                 requiredMessage="Identificador Obligatorio"/>
                     <p:outputLabel value="Nombres: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.nombres_c}"
                                  required="true"
-                                 requiredMessage="El estado es obligatorio"/>
+                                 requiredMessage="Nombres Obligatorio"/>
                     <p:outputLabel value="Apellidos: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.apellidos_c}"
                                  required="true"
-                                 requiredMessage="El estado es obligatorio"/>
+                                 requiredMessage="Apellidos Obligatorio"/>
                     <p:outputLabel value="Direccion: "/>
                     <p:inputText value="#{controladorComerciante.objComerciante.direccion_c}"
                                  required="true"
-                                 requiredMessage="El estado es obligatorio"/>
+                                 requiredMessage="Direccion Obligatorio"/>
                     <p:outputLabel value="Correo: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.correo_c}"
-                                 required="true"
-                                 requiredMessage="El estado es obligatorio"/>
+                    <p:inputText value="#{controladorComerciante.objComerciante.correo_c}"/>
                     <p:outputLabel value="Conadis: "/>
                     <p:selectOneMenu id="cmbConadis" 
                                      value="#{controladorComerciante.objComerciante.conadis}" 
-                                     effect="fold" required="false" >
+                                     effect="fold" required="true" requiredMessage="Conados Obligatorio" >
                         <f:selectItem itemLabel="--- Seleccione ---" itemValue="" />
                         <f:selectItem itemLabel="Si" itemValue="Si" />
                         <f:selectItem itemLabel="No" itemValue="No" />
                     </p:selectOneMenu>
                     <p:outputLabel value="Telefono: "/>
-                    <p:inputText value="#{controladorComerciante.objComerciante.telefono}"
-                                 required="true"
-                                 requiredMessage="El estado es obligatorio"/>
+                    <p:inputText value="#{controladorComerciante.objComerciante.telefono}"/>
                 </h:panelGrid>
             </p:panel>
 

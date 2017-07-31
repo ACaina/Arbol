@@ -80,7 +80,7 @@ public class FComerciante {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * f_insertar_comerciante(?,?,?,?,?,?,?,?)";
+            sql = "select * from f_insertar_comerciante(?,?,?,?,?,?,?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
             prstm.setString(1, comerciante.getTipo_identificador());
             prstm.setString(2, comerciante.getIdentificador());
