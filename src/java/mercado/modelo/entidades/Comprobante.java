@@ -14,34 +14,30 @@ import java.sql.Timestamp;
  */
 public class Comprobante {
     private int id_comprobante;
-    private double valor_cancelar;
     private double iva;
     private Timestamp fecha_emision;
     private Date mes_pago;
     private Date  año_pago;
     private Contrato id_contrato;
-    private Seccion id_seccion;
-    private Tpuesto id_tipo_puesto;
+    private Tarifa id_tarifa;
+    
 
 
 
     public Comprobante() {
         id_contrato= new Contrato();
-        id_seccion= new Seccion();  
-        id_tipo_puesto=new Tpuesto();
+        id_tarifa= new Tarifa();  
         
     }
 
-    public Comprobante(int id_comprobante, double valor_cancelar, double iva, Timestamp fecha_emision, Date mes_pago, Date año_pago, Contrato id_contrato, Seccion id_seccion, Tpuesto id_tipo_puesto) {
+    public Comprobante(int id_comprobante, double iva, Timestamp fecha_emision, Date mes_pago, Date año_pago, Contrato id_contrato, Tarifa id_tarifa) {
         this.id_comprobante = id_comprobante;
-        this.valor_cancelar = valor_cancelar;
         this.iva = iva;
         this.fecha_emision = fecha_emision;
         this.mes_pago = mes_pago;
         this.año_pago = año_pago;
         this.id_contrato = id_contrato;
-        this.id_seccion = id_seccion;
-        this.id_tipo_puesto = id_tipo_puesto;
+        this.id_tarifa = id_tarifa;
     }
 
     /**
@@ -56,20 +52,6 @@ public class Comprobante {
      */
     public void setId_comprobante(int id_comprobante) {
         this.id_comprobante = id_comprobante;
-    }
-
-    /**
-     * @return the valor_cancelar
-     */
-    public double getValor_cancelar() {
-        return valor_cancelar;
-    }
-
-    /**
-     * @param valor_cancelar the valor_cancelar to set
-     */
-    public void setValor_cancelar(double valor_cancelar) {
-        this.valor_cancelar = valor_cancelar;
     }
 
     /**
@@ -143,37 +125,19 @@ public class Comprobante {
     }
 
     /**
-     * @return the id_seccion
+     * @return the id_tarifa
      */
-    public Seccion getId_seccion() {
-        return id_seccion;
+    public Tarifa getId_tarifa() {
+        return id_tarifa;
     }
 
     /**
-     * @param id_seccion the id_seccion to set
+     * @param id_tarifa the id_tarifa to set
      */
-    public void setId_seccion(Seccion id_seccion) {
-        this.id_seccion = id_seccion;
+    public void setId_tarifa(Tarifa id_tarifa) {
+        this.id_tarifa = id_tarifa;
     }
 
-    /**
-     * @return the id_tipo_puesto
-     */
-    public Tpuesto getId_tipo_puesto() {
-        return id_tipo_puesto;
-    }
-
-    /**
-     * @param id_tipo_puesto the id_tipo_puesto to set
-     */
-    public void setId_tipo_puesto(Tpuesto id_tipo_puesto) {
-        this.id_tipo_puesto = id_tipo_puesto;
-    }
-    
- 
    
-    
-    
-    
     
 }
