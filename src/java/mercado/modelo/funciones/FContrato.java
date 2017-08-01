@@ -36,7 +36,7 @@ public class FContrato {
                 contrato.setFecha_fin(resultSet.getString("fecha_fin"));
                 contrato.setId_comerciante(FComerciante.obtenerComercianteDadoId(resultSet.getInt("id_comerciante")));
                 contrato.setId_puesto(FPuesto.obtenerPuestoDadoCodigo(resultSet.getInt("id_puesto")));
-                contrato.setIdActividad(FActividad.obtenerActividadDadoCodigo(resultSet.getInt("idActividad")));   
+                contrato.setIdActividad(FActividad.obtenerActividadDadoCodigo(resultSet.getInt("id_actividad")));   
             }
             accesoDatos.desconectar();
         } catch (Exception e) {
