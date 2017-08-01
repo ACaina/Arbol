@@ -10,8 +10,14 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import mercado.modelo.entidades.Actividad;
+import mercado.modelo.entidades.Comerciante;
 import mercado.modelo.entidades.Contrato;
+import mercado.modelo.entidades.Puesto;
+import mercado.modelo.funciones.FActividad;
+import mercado.modelo.funciones.FComerciante;
 import mercado.modelo.funciones.FContrato;
+import mercado.modelo.funciones.FPuesto;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.DefaultRequestContext;
 import recursos.Util;
@@ -25,6 +31,9 @@ import recursos.Util;
 public class ControladorContrato implements Serializable {
 
     private ArrayList<Contrato> lstContrato;
+    private ArrayList<Puesto> lstPuesto;
+    private ArrayList<Comerciante> lstComerciante;
+    private ArrayList<Actividad> lstActividad;
     private Contrato objContrato;
     private Contrato contratoSel;
     private String msgBD;
@@ -33,14 +42,46 @@ public class ControladorContrato implements Serializable {
         objContrato = new Contrato();
         contratoSel = new Contrato();
         obtenerContrato();
+        obtenerPuesto();
+        obtenerComerciante();
+        obtenerActividad();
     }
 
     public void obtenerContrato() {
         try {
             lstContrato = FContrato.obtenerContrato();
-            System.out.println("total Contrato: "+lstContrato.size());
+            System.out.println("total de Contrato: " + lstContrato.size());
         } catch (Exception e) {
-            System.out.println("public void obtenerContrato() dice: "+e.getMessage());
+//            System.out.println("public void obtenerActividades() dice: " + e.getMessage());
+            Util.addErrorMessage(e.getMessage());
+        }
+    }
+    
+    public void obtenerPuesto() {
+        try {
+            lstPuesto = FPuesto.obtenerPuestos();
+            System.out.println("total de PUESTOS: " + lstPuesto.size());
+        } catch (Exception e) {
+//            System.out.println("public void obtenerActividades() dice: " + e.getMessage());
+            Util.addErrorMessage(e.getMessage());
+        }
+    }
+
+    public void obtenerComerciante() {
+        try {
+            lstComerciante = FComerciante.obtenerComerciantes();
+            System.out.println("total de Comerciante: " + lstComerciante.size());
+        } catch (Exception e) {
+            System.out.println("public void obtenerComerciante() dice: " + e.getMessage());
+            Util.addErrorMessage(e.getMessage());
+        }
+    }
+
+    public void obtenerActividad() {
+        try {
+            lstActividad = FActividad.obtenerActividades();
+            System.out.println("total de Actividad: " + lstActividad.size());
+        } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
     }
@@ -54,14 +95,12 @@ public class ControladorContrato implements Serializable {
             resetearFitrosTabla("frmPrincipal:tblContrato");
             DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarContrato').hide()");
         } catch (Exception e) {
-            
             Util.addErrorMessage(e.getMessage());
         }
     }
 
     public void actualizar() {
         try {
-            System.out.println("Entrar");         
             msgBD = FContrato.actualizarContrato(contratoSel);
             contratoSel = new Contrato();
             obtenerContrato();
@@ -69,12 +108,11 @@ public class ControladorContrato implements Serializable {
             resetearFitrosTabla("frmPrincipal:tblContrato");
             DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarContrato').hide()");
         } catch (Exception e) {
-            System.out.println("actualizar() dice: " + e.getMessage());
             Util.addErrorMessage(e.getMessage());
         }
     }
 
-     public void eliminar() {
+    public void eliminar() {
         try {
             msgBD = FContrato.eliminarContrato(contratoSel);
             contratoSel = new Contrato();
@@ -87,7 +125,6 @@ public class ControladorContrato implements Serializable {
         }
     }
 
-    
     public void resetearFitrosTabla(String id) {
         DataTable table = (DataTable) FacesContext.getCurrentInstance().getViewRoot().findComponent(id);
         table.reset();
@@ -99,6 +136,30 @@ public class ControladorContrato implements Serializable {
 
     public void setLstContrato(ArrayList<Contrato> lstContrato) {
         this.lstContrato = lstContrato;
+    }
+
+    public ArrayList<Puesto> getLstPuesto() {
+        return lstPuesto;
+    }
+
+    public void setLstPuesto(ArrayList<Puesto> lstPuesto) {
+        this.lstPuesto = lstPuesto;
+    }
+
+    public ArrayList<Comerciante> getLstComerciante() {
+        return lstComerciante;
+    }
+
+    public void setLstComerciante(ArrayList<Comerciante> lstComerciante) {
+        this.lstComerciante = lstComerciante;
+    }
+
+    public ArrayList<Actividad> getLstActividad() {
+        return lstActividad;
+    }
+
+    public void setLstActividad(ArrayList<Actividad> lstActividad) {
+        this.lstActividad = lstActividad;
     }
 
     public Contrato getObjContrato() {
@@ -124,4 +185,6 @@ public class ControladorContrato implements Serializable {
     public void setMsgBD(String msgBD) {
         this.msgBD = msgBD;
     }
+
+    
 }

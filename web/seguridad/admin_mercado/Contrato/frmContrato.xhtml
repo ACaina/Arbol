@@ -40,7 +40,7 @@
                             <p:column headerText="Actividad">
                                 <h:outputText value="#{contrato.idActividad}"/>
                             </p:column>
-                            
+                                                    
                             <p:column headerText="Editar" width="10%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-pencil"
                                                  title="Editar" 
@@ -58,7 +58,7 @@
                                 </p:commandButton>
                             </p:column>
                             <f:facet name="footer">
-                                <p:commandButton value="Nuevo Comerciante"
+                                <p:commandButton value="Nuevo Contrato"
                                                  icon="ui-icon-plus"
                                                  onclick="PF('dlgInsertarContrato').show()"
                                                  update="frmInsertarContrato"/>
@@ -72,10 +72,8 @@
         </div>
 
         <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="true" header="Procesando">
-            <img src="../../resources/gifs/Loading.gif" alt=""/>                        
+            <img src="../../../resources/gifs/Loading.gif" alt=""/>                        
         </p:dialog>   
-
-
 
         <ui:include src="frmInsertarContrato.xhtml"/>   
         <ui:include src="frmEditarContrato.xhtml"/>   

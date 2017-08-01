@@ -9,7 +9,6 @@ import accesoDatos.AccesoDatos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import mercado.modelo.entidades.Actividad;
 import mercado.modelo.entidades.Puesto;
 
 /**
@@ -144,6 +143,4 @@ public class FPuesto {
             throw e;
         }
     }
-    
-    
 }

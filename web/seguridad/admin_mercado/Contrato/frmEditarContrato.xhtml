@@ -8,28 +8,41 @@
 
     <p:dialog id="dlgEditarContrato" widgetVar="dlgEditarContrato" closable="false" modal="true" resizable="true" 
               header="Editar Contrato" showEffect="size" hideEffect="size">
-        <h:form id="frmEditarComerciante">
+        <h:form id="frmEditarContrato">
             <h:panelGrid columns="5">
-                <p:outputLabel value="Fecha Inicio:"/>
+                <p:outputLabel value="Fecha Inicio: "/>
                 <p:inputText value="#{controladorContrato.contratoSel.fecha_inicio}"
-                                 required="true"
-                                 requiredMessage="Fecha Inicio Obligatorio"/>
-                    <p:outputLabel value="Fecha Fin:"/>
-                    <p:inputText value="#{controladorContrato.contratoSel.fecha_fin}"
-                                 required="true"
-                                 requiredMessage="Fecha Fin Obligatorio"/>
-                    <p:outputLabel value="Identificador Comerciante:"/>
-                    <p:inputText value="#{controladorContrato.contratoSel.id_comerciante}"
-                                 required="true"
-                                 requiredMessage="Comerciante Obligatorio"/>
-                    <p:outputLabel value="Puesto:"/>
-                    <p:inputText value="#{controladorContrato.contratoSel.id_puesto}"
-                                 required="true"
-                                 requiredMessage="Puesto Obligatorio"/>
-                    <p:outputLabel value="Actividad:"/>
-                    <p:inputText value="#{controladorContrato.contratoSel.idActividad}"
-                                 required="true"
-                                 requiredMessage="Fecha Inicio Obligatorio"/>
+                             required="true"
+                             requiredMessage="Fecha Inicio es obligatoria"/>
+                <p:outputLabel value="Fecha Fin: "/>
+                <p:inputText value="#{controladorContrato.contratoSel.fecha_fin}"
+                             required="true"
+                             requiredMessage="Fecha Fin es obligatoria"/>
+                <p:outputLabel value="Comerciante:"/>
+                <p:selectOneMenu id="cmbComerciante" 
+                                 value="#{controladorContrato.contratoSel.id_comerciante.id_comerciante}" 
+                                 effect="fold" required="true" requiredMessage="Comerciante es obligatoria">
+                    <f:selectItem itemLabel="--Seleccione --" itemValue="#{null}"/>
+                    <f:selectItems value="#{controladorContrato.lstComerciante}"
+                                   var="sub" itemLabel="#{sub.identificador}" itemValue="#{sub.id_comerciante}"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Puesto"/>
+                <p:selectOneMenu id="cmbPuesto" 
+                                 value="#{controladorContrato.contratoSel.id_puesto.id_puesto}" 
+                                 effect="fold" required="true" requiredMessage="Puesto es obligatoria">
+                    <f:selectItem itemLabel="--Seleccione --" itemValue="#{null}"/>
+                    <f:selectItems value="#{controladorContrato.lstPuesto}"
+                                   var="sub" itemLabel="#{sub.numero_puesto}" itemValue="#{sub.id_puesto}"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Actividad"/>
+                <p:selectOneMenu id="cmbAct" 
+                                 value="#{controladorContrato.contratoSel.idActividad.idActividad}" 
+                                 effect="fold" required="true" requiredMessage="Actividad es obligatoria">
+                    <f:selectItem itemLabel="--Seleccione --" itemValue="#{null}"/>
+                    <f:selectItems value="#{controladorContrato.lstActividad}"
+                                   var="sub" itemLabel="#{sub.descripcion}" itemValue="#{sub.idActividad}"/>
+                </p:selectOneMenu>
+
             </h:panelGrid>
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"

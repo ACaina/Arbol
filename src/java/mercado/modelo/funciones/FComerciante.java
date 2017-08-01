@@ -72,6 +72,38 @@ public class FComerciante {
         return comerciante;
     }
 
+    public static Comerciante obtenerComercianteDadoId(Integer id) throws Exception {
+        Comerciante comerciante = null;
+        AccesoDatos accesoDatos;
+        String sql;
+        PreparedStatement prstm;
+        ResultSet resultSet;
+        try {
+            accesoDatos = new AccesoDatos();
+            sql = "SELECT * FROM f_seleccionar_comerciante_dado_id(?)";
+            prstm = accesoDatos.creaPreparedSmt(sql);
+            prstm.setInt(1, id);
+            resultSet = accesoDatos.ejecutaPrepared(prstm);
+            while (resultSet.next()) {
+                comerciante = new Comerciante();
+                comerciante.setId_comerciante(resultSet.getInt("id_comerciante"));
+                comerciante.setTipo_identificador(resultSet.getString("tipo_identificador"));
+                comerciante.setIdentificador(resultSet.getString("identificador"));
+                comerciante.setNombres_c(resultSet.getString("nombres_c"));
+                comerciante.setApellidos_c(resultSet.getString("apellidos_c"));
+                comerciante.setDireccion_c(resultSet.getString("direccion_c"));
+                comerciante.setCorreo_c(resultSet.getString("correo_c"));
+                comerciante.setConadis(resultSet.getString("conadis"));
+                comerciante.setTelefono(resultSet.getString("telefono"));
+            }
+            accesoDatos.desconectar();
+        } catch (Exception e) {
+            throw e;
+        }
+        return comerciante;
+    }
+
+    
     public static String insertarComerciante(Comerciante comerciante) throws Exception {
         String res;
         AccesoDatos accesoDatos;

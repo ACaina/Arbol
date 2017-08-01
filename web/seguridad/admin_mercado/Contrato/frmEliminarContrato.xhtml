@@ -8,11 +8,10 @@
 
     <p:dialog id="dlgEliminarContrato" widgetVar="dlgEliminarContrato" closable="false" modal="true" resizable="true" 
               header="Eliminar Contrato" showEffect="size" hideEffect="size">
-        <h:form id="frmEliminarComerciante">
+        <h:form id="frmEliminarPuesto">
             <center>
                 <h3>¿Esta seguro que desea eliminar el Contrato del comerciante #{controladorContrato.contratoSel.id_comerciante.identificador}?</h3>
             </center>
-
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"
                                  action="#{controladorContrato.eliminar()}"
