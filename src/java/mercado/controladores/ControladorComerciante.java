@@ -61,11 +61,14 @@ public class ControladorComerciante implements Serializable {
 
     public void actualizar() {
         try {
-            System.out.println("Entra editar");
+            System.out.println("Entrar");         
             msgBD = FComerciante.actualizarComerciante(comercianteSel);
+            System.out.println("Enkkkr");
             comercianteSel = new Comerciante();
+            System.out.println("222");
             obtenerComerciante();
             Util.addSuccessMessage(msgBD);
+            
             resetearFitrosTabla("frmPrincipal:tblComerciante");
             DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarComerciante').hide()");
         } catch (Exception e) {

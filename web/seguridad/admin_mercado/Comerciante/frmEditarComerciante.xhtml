@@ -36,10 +36,8 @@
                 <p:inputText value="#{controladorComerciante.comercianteSel.correo_c}"
                              required="false"/>
                 <p:outputLabel value="Conadis: "/>
-                <p:selectOneMenu id="cmbConadis" 
-                                 value="#{controladorComerciante.comercianteSel.conadis} " 
-                                 style="width:125px" effect="fold" required="true" requiredMessage="Conadis es Obligatorio">
-                    <f:selectItem itemLabel="--- Seleccione ---" itemValue="" />
+                <p:selectOneMenu id="cmdConadis" value="#{controladorComerciante.comercianteSel.conadis}" style="width:125px" effect="fold" required="true" requiredMessage="Conadis es obligatoria">
+                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
                     <f:selectItem itemLabel="Si" itemValue="Si" />
                     <f:selectItem itemLabel="No" itemValue="No" />
                 </p:selectOneMenu>
