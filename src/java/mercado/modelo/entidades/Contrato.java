@@ -116,5 +116,4 @@ public class Contrato {
     public void setIdActividad(Actividad idActividad) {
         this.idActividad = idActividad;
     }
-    
 }
