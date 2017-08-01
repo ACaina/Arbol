@@ -110,7 +110,7 @@ public class FComerciante {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * from f_actualizar_comerciante((?,?,?,?,?,?,?,?,?)";
+            sql = "select * from f_actualizar_comerciante(?,?,?,?,?,?,?,?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
             prstm.setInt(1, comerciante.getId_comerciante());
             prstm.setString(2, comerciante.getTipo_identificador());
@@ -129,6 +129,7 @@ public class FComerciante {
                 return null;
             }
         } catch (Exception e) {
+            System.out.println("Enkkkr"+e.getMessage());
             throw e;
         }
     }
