@@ -20,7 +20,7 @@ public class TestComerciante {
      */
     public static void main(String[] args) throws Exception {
         try {
-            Comerciante comerciante = FComerciante.obtenerComercianteDadoIentificador("060124578");
+            Comerciante comerciante = FComerciante.obtenerComercianteDadoId(1);
             System.out.println("\n\nId_comerciante: " + comerciante.getId_comerciante()
                     + "\n tipo_identificador: " + comerciante.getTipo_identificador()
                     + "\n identificador: " + comerciante.getIdentificador()

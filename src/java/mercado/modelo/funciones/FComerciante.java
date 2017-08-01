@@ -41,7 +41,7 @@ public class FComerciante {
         return lst;
     }
 
-    public static Comerciante obtenerComercianteDadoIentificador(String ident) throws Exception {
+    public static Comerciante obtenerComercianteDadoId(Integer ident) throws Exception {
         Comerciante comerciante = null;
         AccesoDatos accesoDatos;
         String sql;
@@ -49,9 +49,9 @@ public class FComerciante {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "SELECT * FROM f_seleccionar_comerciante_dado_identificador(?)";
+            sql = "SELECT * FROM f_seleccionar_comerciante_dado_id(?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setString(1, ident);
+            prstm.setInt(1, ident);
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             while (resultSet.next()) {
                 comerciante = new Comerciante();

@@ -34,7 +34,7 @@ public class FContrato {
                 contrato.setId_contrato(resultSet.getInt("id_contrato"));
                 contrato.setFecha_inicio(resultSet.getString("fecha_inicio"));
                 contrato.setFecha_fin(resultSet.getString("fecha_fin"));
-                contrato.setId_comerciante(FComerciante.obtenerComercianteDadoIentificador(resultSet.getString("id_comerciante")));
+                contrato.setId_comerciante(FComerciante.obtenerComercianteDadoId(resultSet.getInt("id_comerciante")));
                 contrato.setId_puesto(FPuesto.obtenerPuestoDadoCodigo(resultSet.getInt("id_puesto")));
                 contrato.setIdActividad(FActividad.obtenerActividadDadoCodigo(resultSet.getInt("idActividad")));   
             }
@@ -60,9 +60,9 @@ public class FContrato {
                 contrato.setId_contrato(resultSet.getInt("id_contrato"));
                 contrato.setFecha_inicio(resultSet.getString("fecha_inicio"));
                 contrato.setFecha_fin(resultSet.getString("fecha_fin"));
-                contrato.setId_comerciante(FComerciante.obtenerComercianteDadoIentificador(resultSet.getInt("id_comerciante")));
+                contrato.setId_comerciante(FComerciante.obtenerComercianteDadoId(resultSet.getInt("id_comerciante")));
                 contrato.setId_puesto(FPuesto.obtenerPuestoDadoCodigo(resultSet.getInt("id_puesto")));
-                contrato.setIdActividad(FActividad.obtenerActividadDadoCodigo(resultSet.getInt("idActividad")));   
+                contrato.setIdActividad(FActividad.obtenerActividadDadoCodigo(resultSet.getInt("id_actividad")));   
                 lst.add(contrato);
             }
         } catch (Exception e) {
