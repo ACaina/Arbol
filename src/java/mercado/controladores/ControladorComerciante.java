@@ -54,12 +54,14 @@ public class ControladorComerciante implements Serializable {
             resetearFitrosTabla("frmPrincipal:tblComerciante");
             DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarComerciante').hide()");
         } catch (Exception e) {
+            
             Util.addErrorMessage(e.getMessage());
         }
     }
 
     public void actualizar() {
         try {
+            System.out.println("Entra editar");
             msgBD = FComerciante.actualizarComerciante(comercianteSel);
             comercianteSel = new Comerciante();
             obtenerComerciante();
@@ -67,6 +69,7 @@ public class ControladorComerciante implements Serializable {
             resetearFitrosTabla("frmPrincipal:tblComerciante");
             DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarComerciante').hide()");
         } catch (Exception e) {
+            System.out.println("actualizar() dice: " + e.getMessage());
             Util.addErrorMessage(e.getMessage());
         }
     }

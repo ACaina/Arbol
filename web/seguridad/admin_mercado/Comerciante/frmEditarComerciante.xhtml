@@ -10,13 +10,12 @@
               header="Editar Comerciante" showEffect="size" hideEffect="size">
         <h:form id="frmEditarComerciante">
             <h:panelGrid columns="8">
-                <p:outputLabel value="Tipo Identificador: "/>
+                 <p:outputLabel value="Tipo Identificador: "/>
                 <p:selectOneMenu id="cmdTIndent" value="#{controladorComerciante.comercianteSel.tipo_identificador}" style="width:125px" effect="fold" required="true" requiredMessage="Tipo Identificador es obligatoria">
                     <f:selectItem itemLabel="--Seleccione--" itemValue="" />
                     <f:selectItem itemLabel="Cedula" itemValue="Cedula" />
                     <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" />
                 </p:selectOneMenu>
-
                 <p:outputLabel value="identificador: "/>
                 <p:inputText value="#{controladorComerciante.comercianteSel.identificador}"
                              required="true"
@@ -44,11 +43,9 @@
                     <f:selectItem itemLabel="Si" itemValue="Si" />
                     <f:selectItem itemLabel="No" itemValue="No" />
                 </p:selectOneMenu>
-
                 <p:outputLabel value="Telefono: "/>
                 <p:inputText value="#{controladorComerciante.comercianteSel.telefono}"/>
             </h:panelGrid>
-
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"
                                  action="#{controladorComerciante.actualizar()}"

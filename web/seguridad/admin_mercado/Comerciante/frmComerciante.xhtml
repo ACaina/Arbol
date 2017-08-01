@@ -46,14 +46,7 @@
                             <p:column headerText="Telefono">
                                 <h:outputText value="#{comerciante.telefono}"/>
                             </p:column>
-                            <p:column headerText="Editar" width="10%" style="text-align: center">
-                                <p:commandButton icon="ui-icon-pencil"
-                                                 title="Editar" 
-                                                 onclick="PF('dlgEditarComerciante').show()"
-                                                 update="frmEditarComerciante">
-                                    <f:setPropertyActionListener value="#{comerciante}" target="#{controladorComerciante.comercianteSel}"/>
-                                </p:commandButton>
-                            </p:column>
+                            
                             <p:column headerText="Editar" width="10%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-pencil"
                                                  title="Editar" 
