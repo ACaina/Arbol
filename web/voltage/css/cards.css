@@ -693,8 +693,8 @@ a:hover .lnk-icon-right {
 }
 .fh5co-nav-style-1 .fh5co-link-wrap ul li a.call-to-action, .fh5co-nav-style-2 .fh5co-link-wrap ul li a.call-to-action {
   margin-top: 2px;
-  border: 2px solid #58ca7e;
-  background: #58ca7e;
+  border: 2px solid #045491;
+  background: #045491;
   padding: 2px 15px !important;
   display: -moz-inline-stack;
   display: inline-block;
@@ -708,8 +708,8 @@ a:hover .lnk-icon-right {
 }
 .fh5co-nav-style-1 .fh5co-link-wrap ul li a.call-to-action:hover, .fh5co-nav-style-2 .fh5co-link-wrap ul li a.call-to-action:hover {
   color: #fff;
-  border: 2px solid #45c46f;
-  background: #45c46f;
+  border: 2px solid #005580;
+  background: #AFAFAF;
 }
 .fh5co-nav-style-1 .fh5co-link-wrap ul li.active a, .fh5co-nav-style-2 .fh5co-link-wrap ul li.active a {
   color: #fff;
