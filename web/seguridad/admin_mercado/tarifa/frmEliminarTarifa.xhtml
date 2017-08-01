@@ -6,19 +6,19 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <p:dialog id="dlgEliminarPuesto" widgetVar="dlgEliminarPuesto" closable="false" modal="true" resizable="true" 
-              header="Eliminar actividad" showEffect="size" hideEffect="size">
-        <h:form id="frmEliminarPuesto">
+    <p:dialog id="dlgEliminarTarifa" widgetVar="dlgEliminarTarifa" closable="false" modal="true" resizable="true" 
+              header="Eliminar Tarifa" showEffect="size" hideEffect="size">
+        <h:form id="frmEliminarTarifa">
             <center>
-                <h3>¿Esta seguro que desea eliminar la puesto #{controladorPuesto.puestoSel.numero_puesto}?</h3>
+                <h3>¿Esta seguro que desea eliminar la tarifa #{controladorTarifa.tarifaSel.valor_tarifa}?</h3>
             </center>
 
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"
-                                 action="#{controladorPuesto.eliminar()}"
-                                 update="frmPrincipal:tblPuesto"/>
+                                 action="#{controladorTarifa.eliminar()}"
+                                 update="frmPrincipal:tblTarifa"/>
                 <p:commandButton value="Cancelar" icon="ui-icon-close"
-                                 onclick="PF('dlgEliminarPuesto').hide()"
+                                 onclick="PF('dlgEliminarTarifa').hide()"
                                  process="@this"/>
             </center>
         </h:form>

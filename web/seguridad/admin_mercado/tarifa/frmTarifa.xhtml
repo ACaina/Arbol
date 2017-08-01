@@ -17,44 +17,44 @@
                         <p:messages autoUpdate="true" showDetail="true"/>
                         <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /> 
 
-                        <p:dataTable id="tblPuesto" value="#{controladorTarifa.lstTarifa}" var="tarifa" 
+                        <p:dataTable id="tblTarifa" value="#{controladorTarifa.lstTarifa}" var="tarifa" 
                                      reflow="true" rows="10" paginator="true"
                                      rowKey="#{tarifa.idTarifa}"
                                      selection="#{controladorTarifa.tarifaSel}"
                                      selectionMode="single">
-                            <p:column headerText="Id Puesto" width="10%">
-                                <h:outputText value="#{puesto.id_puesto}"/>
-                            </p:column>
-                            <p:column headerText="Numero Puesto">
-                                <h:outputText value="#{puesto.numero_puesto}"/>
+                            <p:column headerText="Id Tarifa" width="10%">
+                                <h:outputText value="#{tarifa.idTarifa}"/>
                             </p:column>
                             <p:column headerText="Valor Tarifa">
-                                <h:outputText value="#{puesto.id_tarifa.valor_tarifa}"/>
+                                <h:outputText value="#{tarifa.valor_tarifa}"/>
                             </p:column>
-                            <p:column headerText="Mercado">
-                                <h:outputText value="#{puesto.id_mercado.nombre_mercado}"/>
+                            <p:column headerText="Seccion">
+                                <h:outputText value="#{tarifa.idSeccion.nombre_seccion}"/>
+                            </p:column>
+                            <p:column headerText="Tipo Puesto">
+                                <h:outputText value="#{tarifa.id_tipo_puesto.descripcion_tipo_puesto}"/>
                             </p:column>
                             <p:column headerText="Editar" width="10%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-pencil"
                                                  title="Editar" 
-                                                 onclick="PF('dlgEditarPuesto').show()"
-                                                 update="frmEditarPuesto">
-                                    <f:setPropertyActionListener value="#{puesto}" target="#{controladorPuesto.puestoSel}"/>
+                                                 onclick="PF('dlgEditarTarifa').show()"
+                                                 update="frmEditarTarifa">
+                                    <f:setPropertyActionListener value="#{tarifa}" target="#{controladorTarifa.tarifaSel}"/>
                                 </p:commandButton>
                             </p:column>
                             <p:column headerText="Eliminar" width="10%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-delete-forever"
                                                  title="Eliminar"
-                                                 onclick="PF('dlgEliminarPuesto').show()"
-                                                 update="frmEliminarPuesto">
-                                    <f:setPropertyActionListener value="#{puesto}" target="#{controladorPuesto.puestoSel}"/>   
+                                                 onclick="PF('dlgEliminarTarifa').show()"
+                                                 update="frmEliminarTarifa">
+                                    <f:setPropertyActionListener value="#{tarifa}" target="#{controladorTarifa.tarifaSel}"/>   
                                 </p:commandButton>
                             </p:column>
                             <f:facet name="footer">
-                                <p:commandButton value="Nueva actividad"
+                                <p:commandButton value="Nueva tarifa"
                                                  icon="ui-icon-plus"
-                                                 onclick="PF('dlgInsertarPuesto').show()"
-                                                 update="frmInsertarPuesto"/>
+                                                 onclick="PF('dlgInsertarTarifa').show()"
+                                                 update="frmInsertarTarifa"/>
                             </f:facet>
                         </p:dataTable>
 

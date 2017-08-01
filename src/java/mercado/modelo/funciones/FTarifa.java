@@ -53,8 +53,6 @@ public class FTarifa {
             prstm = accesoDatos.creaPreparedSmt(sql);
             prstm.setDouble(1, tarifa.getValor_tarifa());
             prstm.setInt(2, tarifa.getIdSeccion().getIdSeccion());
-            //prstm.setString(2, tarifa.getIdSeccion().getNombre_seccion());
-            //prstm.setInt(3,tarifa.getId_tipo_puesto().getDescripcion_tipo_puesto());
             prstm.setInt(3, tarifa.getId_tipo_puesto().getId_tipo_puesto());
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             if (resultSet.next()) {
@@ -103,14 +101,12 @@ public class FTarifa {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * from f_actualizar_tarifa((?,?,?,?)";
+            sql = "select * from f_actualizar_tarifa(?,?,?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
-            prstm.setInt(1, tarifa.getIdTarifa());
-            prstm.setDouble(2, tarifa.getValor_tarifa());
-            prstm.setInt(3, tarifa.getIdSeccion().getIdSeccion());
-            //prstm.setString(2, tarifa.getIdSeccion().getNombre_seccion());
-            //prstm.setInt(3,tarifa.getId_tipo_puesto().getDescripcion_tipo_puesto());
-            prstm.setInt(4, tarifa.getId_tipo_puesto().getId_tipo_puesto());
+            prstm.setDouble(1, tarifa.getValor_tarifa());
+            prstm.setInt(2, tarifa.getIdSeccion().getIdSeccion());
+            prstm.setInt(3, tarifa.getId_tipo_puesto().getId_tipo_puesto());
+            prstm.setInt(4, tarifa.getIdTarifa());
             resultSet = accesoDatos.ejecutaPrepared(prstm);
             if (resultSet.next()) {
                 res = resultSet.getString(1);

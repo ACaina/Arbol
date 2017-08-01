@@ -77,8 +77,8 @@ public class ControladorTarifa {
             objTarifa = new Tarifa();
             obtenerTarifa();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblPuesto");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarPuesto').hide()");
+            resetearFitrosTabla("frmPrincipal:tblTarifa");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarTarifa').hide()");
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
@@ -90,8 +90,8 @@ public class ControladorTarifa {
             tarifaSel = new Tarifa();
             obtenerTarifa();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblPuesto");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarPuesto').hide()");
+            resetearFitrosTabla("frmPrincipal:tblTarifa");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarTarifa').hide()");
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
@@ -103,8 +103,8 @@ public class ControladorTarifa {
             tarifaSel = new Tarifa();
             obtenerTarifa();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblPuesto");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEliminarPuesto').hide()");
+            resetearFitrosTabla("frmPrincipal:tblTarifa");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEliminarTarifa').hide()");
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
