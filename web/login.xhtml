@@ -50,13 +50,13 @@
                         <p:button value="#{AtributosVistas.btnCancelar}" outcome="index" >
                             <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
                         </p:button>
-                        <a href="vNuevoRegistro.xhtml">#{AtributosVistas.registrar}</a><br/>
+<!--                        <a href="vNuevoRegistro.xhtml">#{AtributosVistas.registrar}</a><br/>
                         <br/>
-                        <a href="vRecuperarClave.xhtml">#{AtributosVistas.recuperar}</a>
+                        <a href="vRecuperarClave.xhtml">#{AtributosVistas.recuperar}</a>   -->
                     </div>
 
                 </div> 
-                <h6>#{AtributosVistas.asterico}</h6>
+                <h6>OBLIGATORIO (*) </h6>
             </div>
         </h:form>
         <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="true" header="Procesando">
