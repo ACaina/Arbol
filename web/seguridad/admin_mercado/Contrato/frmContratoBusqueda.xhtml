@@ -16,7 +16,20 @@
                         <p:growl autoUpdate="true" showDetail="true"/>
                         <p:messages autoUpdate="true" showDetail="true"/>
                         <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /> 
-
+                        <center>
+                            <h:panelGrid columns="4">
+                                <p:outputLabel value="Cedula"/>
+                                <p:inputText value="#{controladorSeccion.estado}"/>
+                                <p:commandButton value="Buscar"
+                                                 icon="ui-icon-search"
+                                                 action="#{controladorSeccion.obtenerSeccionesDadoEstado()}"
+                                                 update="frmPrincipal:tblContrato"/>
+                                <p:commandButton value="Limpiar"
+                                                 icon="ui-icon-refresh"
+                                                 action="#{controladorSeccion.obtenerSecciones()}"
+                                                 update="frmPrincipal:tblContrato"/>
+                            </h:panelGrid>
+                        </center>
                         <p:dataTable id="tblContrato" value="#{controladorContratoVista.lstContrato}" var="contrato" 
                                      reflow="true" rows="10" paginator="true"
                                      rowKey="#{contrato.id_contrato}"
