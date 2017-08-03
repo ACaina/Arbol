@@ -16,32 +16,50 @@
                         <p:growl autoUpdate="true" showDetail="true"/>
                         <p:messages autoUpdate="true" showDetail="true"/>
                         <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /> 
-
+                        <center>
+                            <h:panelGrid columns="4">
+                                <p:outputLabel value="Identificador: "/>
+                                <p:inputText value="#{controladorContrato.parametro}"
+                                             placeholder="Ej. 0603977224"/>
+                                <p:commandButton value="Buscar"
+                                                 icon="ui-icon-search"
+                                                 action="#{controladorContrato.encontrarContratos()}"
+                                                 update="frmPrincipal:tblContrato"/>
+                                <p:commandButton value="Limpiar"
+                                                 icon="ui-icon-refresh"
+                                                 action="#{controladorContrato.obtenerContrato()}"
+                                                 update="frmPrincipal:tblContrato"/>
+                            </h:panelGrid>
+                        </center>
                         <p:dataTable id="tblContrato" value="#{controladorContrato.lstContrato}" var="contrato" 
                                      reflow="true" rows="10" paginator="true"
                                      rowKey="#{contrato.id_contrato}"
                                      selection="#{controladorContrato.contratoSel}"
                                      selectionMode="single">
-                            <p:column headerText="Id Contrato" width="10%">
+                            <p:column headerText="Id Contrato" width="5%">
                                 <h:outputText value="#{contrato.id_contrato}"/>
                             </p:column>
-                            <p:column headerText="Fecha Inicio">
-                                <h:outputText value="#{contrato.fecha_inicio}"/>
-                            </p:column>
-                            <p:column headerText="Fecha Fin">
-                                <h:outputText value="#{contrato.fecha_fin}"/>
+                            <p:column headerText="Identificación">
+                                <h:outputText value="#{contrato.id_comerciante.identificador}"/>
                             </p:column>
                             <p:column headerText="Comerciante">
-                                <h:outputText value="#{contrato.id_comerciante}"/>
-                            </p:column>
-                            <p:column headerText="Puesto">
-                                <h:outputText value="#{contrato.id_puesto}"/>
+                                <h:outputText value="#{contrato.id_comerciante.nombres_c} #{contrato.id_comerciante.apellidos_c}"/>
                             </p:column>
                             <p:column headerText="Actividad">
-                                <h:outputText value="#{contrato.idActividad}"/>
+                                <h:outputText value="#{contrato.idActividad.descripcion}"/>
                             </p:column>
-                                                    
-                            <p:column headerText="Editar" width="10%" style="text-align: center">
+                            <p:column headerText="Fecha Inicio" width="10%" style="text-align: center">
+                                <h:outputText value="#{contrato.fecha_inicio}"/>
+                            </p:column>
+                            <p:column headerText="Fecha Fin" width="10%" style="text-align: center">
+                                <h:outputText value="#{contrato.fecha_fin}"/>
+                            </p:column>
+
+                            <p:column headerText="Puesto">
+                                <h:outputText value="#{contrato.id_puesto.numero_puesto}"/>
+                            </p:column>
+
+                            <p:column headerText="Editar" width="5%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-pencil"
                                                  title="Editar" 
                                                  onclick="PF('dlgEditarContrato').show()"
@@ -49,7 +67,7 @@
                                     <f:setPropertyActionListener value="#{contrato}" target="#{controladorContrato.contratoSel}"/>
                                 </p:commandButton>
                             </p:column>
-                            <p:column headerText="Eliminar" width="10%" style="text-align: center">
+                            <p:column headerText="Eliminar" width="5%" style="text-align: center">
                                 <p:commandButton icon="ui-icon-delete-forever"
                                                  title="Eliminar"
                                                  onclick="PF('dlgEliminarContrato').show()"
@@ -57,11 +75,27 @@
                                     <f:setPropertyActionListener value="#{contrato}" target="#{controladorContrato.contratoSel}"/>   
                                 </p:commandButton>
                             </p:column>
+                            <p:column headerText="Reporte" width="5%" style="text-align: center">
+                                <p:commandButton icon="ui-icon-local-printshop"
+                                                 title="Imprimir reporte" ajax="false"
+                                                 actionListener="#{controladorContrato.verReporteIndividual()}"
+                                                 onclick="this.form.target = '_blank'">
+                                    <f:setPropertyActionListener value="#{contrato}" target="#{controladorContrato.contratoSel}"/>         
+                                </p:commandButton>
+                            </p:column>
                             <f:facet name="footer">
                                 <p:commandButton value="Nuevo Contrato"
                                                  icon="ui-icon-plus"
                                                  onclick="PF('dlgInsertarContrato').show()"
                                                  update="frmInsertarContrato"/>
+                                <p:column headerText="Reporte" width="5%" style="text-align: center">
+                                    <p:commandButton icon="ui-icon-local-printshop" ajax="false"
+                                                     title="Imprimir reporte"
+                                                     value="Reporte Global"
+                                                     actionListener="#{controladorContrato.verReporteGeneral()}"
+                                                     onclick="this.form.target = '_blank'">                                       
+                                    </p:commandButton>
+                                </p:column>
                             </f:facet>
                         </p:dataTable>
 

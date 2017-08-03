@@ -6,18 +6,19 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <p:dialog id="dlgEliminarContrato" widgetVar="dlgEliminarContrato" closable="false" modal="true" resizable="true" 
-              header="Eliminar Contrato" showEffect="size" hideEffect="size">
-        <h:form id="frmEliminarContrato">
+    <p:dialog id="dlgEliminar" widgetVar="dlgEliminar" closable="false" modal="true" resizable="true" 
+              header="Eliminar" showEffect="size" hideEffect="size">
+        <h:form id="frmEliminar">
             <center>
-                <h3>¿Esta seguro que desea eliminar el Contrato del comerciante #{controladorContrato.contratoSel.id_comerciante.identificador}?</h3>
+                <h3>¿Esta seguro que desea eliminar el Comprobante N° #{controladorComprobante.comprobanteSel.id_comprobante}?</h3>
             </center>
+
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"
-                                 action="#{controladorContrato.eliminar()}"
-                                 update="frmPrincipal:tblContrato"/>
+                                 action="#{controladorComprobante.eliminarComprobante()}"
+                                 update="frmPrincipal:tblComprobante"/>
                 <p:commandButton value="Cancelar" icon="ui-icon-close"
-                                 onclick="PF('dlgEliminarContrato').hide()"
+                                 onclick="PF('dlgEliminar').hide()"
                                  process="@this"/>
             </center>
         </h:form>

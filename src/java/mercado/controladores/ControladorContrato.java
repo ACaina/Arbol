@@ -6,10 +6,16 @@
 package mercado.controladores;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import mercado.modelo.entidades.Actividad;
 import mercado.modelo.entidades.Comerciante;
 import mercado.modelo.entidades.Contrato;
@@ -18,6 +24,7 @@ import mercado.modelo.funciones.FActividad;
 import mercado.modelo.funciones.FComerciante;
 import mercado.modelo.funciones.FContrato;
 import mercado.modelo.funciones.FPuesto;
+import mercado.reportes.entidades.Reportes;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.DefaultRequestContext;
 import recursos.Util;
@@ -37,6 +44,9 @@ public class ControladorContrato implements Serializable {
     private Contrato objContrato;
     private Contrato contratoSel;
     private String msgBD;
+    private String parametro;
+    private Date fechaInicio;
+    private Date fechaFin;
 
     public ControladorContrato() {
         objContrato = new Contrato();
@@ -56,7 +66,7 @@ public class ControladorContrato implements Serializable {
             Util.addErrorMessage(e.getMessage());
         }
     }
-    
+
     public void obtenerPuesto() {
         try {
             lstPuesto = FPuesto.obtenerPuestos();
@@ -88,8 +98,18 @@ public class ControladorContrato implements Serializable {
 
     public void insertar() {
         try {
+
+            DateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
+            String strFechaInicio = fecha.format(fechaInicio);
+            String strFechaFin = fecha.format(fechaFin);
+            objContrato.setFecha_inicio(strFechaInicio);
+            objContrato.setFecha_fin(strFechaFin);
+
+            System.out.println("Fecha inicio: " + strFechaInicio + "\n\n\n fecha fin: " + strFechaFin + "\n\n\n");
+
             msgBD = FContrato.insertarContrato(objContrato);
             objContrato = new Contrato();
+
             obtenerContrato();
             Util.addSuccessMessage(msgBD);
             resetearFitrosTabla("frmPrincipal:tblContrato");
@@ -123,6 +143,34 @@ public class ControladorContrato implements Serializable {
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
+    }
+
+    public void encontrarContratos() {
+        try {
+            lstContrato = FContrato.econtrarContratos(parametro);
+        } catch (Exception e) {
+            System.out.println("public void encontrarContratos() dice: " + e.getMessage());
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
+            FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+        }
+    }
+
+    public void verReporteGeneral() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        Reportes reporte = new Reportes();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ServletContext servletContext = (ServletContext) facesContext.getExternalContext().getContext();
+        String ruta = servletContext.getRealPath("/reportes/RepContratoGlobal.jasper");
+        reporte.getReporteGlobal(ruta);
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+
+    public void verReporteIndividual() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        Reportes reporte = new Reportes();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ServletContext servletContext = (ServletContext) facesContext.getExternalContext().getContext();
+        String ruta = servletContext.getRealPath("/reportes/RepContratoIndividual.jasper");
+        reporte.getReportePdfPorId(ruta, contratoSel.getId_contrato());
+        FacesContext.getCurrentInstance().responseComplete();
     }
 
     public void resetearFitrosTabla(String id) {
@@ -186,5 +234,28 @@ public class ControladorContrato implements Serializable {
         this.msgBD = msgBD;
     }
 
-    
+    public String getParametro() {
+        return parametro;
+    }
+
+    public void setParametro(String parametro) {
+        this.parametro = parametro;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
 }

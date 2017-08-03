@@ -11,15 +11,17 @@
         <h:form id="frmInsertarContrato">
             <p:messages autoUpdate="true"/>
             <p:panel>
-                <h:panelGrid columns="5" >
-                    <p:outputLabel value="Fecha Inicio: "/>
-                    <p:inputText value="#{controladorContrato.objContrato.fecha_inicio}"
-                                     required="true"
-                                     requiredMessage="Fecha Inicio es obligatoria"/>
+                <h:panelGrid columns="4" >
+                    <p:outputLabel value="Fecha Inicio: "/>                  
+                    <p:calendar id="fechaInicio" value="#{controladorContrato.fechaInicio}" 
+                                showOn="button"  pattern="dd-MM-yyyy"
+                                required="true"
+                                requiredMessage="Fecha Inicio es obligatoria"/>                    
                     <p:outputLabel value="Fecha Fin: "/>
-                    <p:inputText value="#{controladorContrato.objContrato.fecha_fin}"
-                                     required="true"
-                                     requiredMessage="Fecha Fin es obligatoria"/>
+                    <p:calendar id="fechaFin" value="#{controladorContrato.fechaFin}" 
+                                showOn="button"   pattern="dd-MM-yyyy"
+                                required="true"
+                                requiredMessage="Fecha fin es obligatoria"/>
                     <p:outputLabel value="Comerciante:"/>
                     <p:selectOneMenu id="cmbComerciante" 
                                      value="#{controladorContrato.objContrato.id_comerciante.id_comerciante}" 

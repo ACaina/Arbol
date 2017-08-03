@@ -86,7 +86,7 @@ public class ServiciosRolUsuario {
         ResultSet resultSet;
         try {
             accesoDatos = new AccesoDatos();
-            sql = "select * from master.f_insertar_rol_usuario(?,?)";
+            sql = "select * from master.f_insertar_rol_usuario_2(?,?)";
             prstm = accesoDatos.creaPreparedSmt(sql);
             prstm.setInt(1, ru.getIdRol().getIdRol());
             prstm.setInt(2, ru.getIdUsuario().getIdPersona());

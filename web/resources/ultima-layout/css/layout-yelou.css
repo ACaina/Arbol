@@ -1425,11 +1425,11 @@ body.layout-compact .layout-wrapper .layout-menu #profile-menu li:last-child {
 body.layout-compact .layout-wrapper .layout-menu > .nano > .nano-content > ul:last-child {
     margin-top: 14px; }
 body.layout-compact .ui-widget-content {
-    font-size: 14px; }
+    font-size: 11px; }
 body.layout-compact .ui-widget-header {
-    font-size: 14px; }
+    font-size: 10px; }
 body.layout-compact .ui-icon {
-    font-size: 20px; }
+    font-size: 16px; }
 body.layout-compact .card {
     padding: 16px;
     margin-bottom: 16px;
