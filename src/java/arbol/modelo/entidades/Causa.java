@@ -13,19 +13,23 @@ public class Causa {
     private int id_causa; 
     private String nombre_causa;
     private String titulo;
-    private Causa id_causa_rec;  
+    //private Causa id_causa_rec;
+    private int id_causa_rec;  
     
+//    public Causa() {
+//    id_causa_rec = new Causa();
+//    }
     public Causa() {
-    id_causa_rec = new Causa();
+        
     }
     
-    public Causa(int id_causa, String nombre_causa, String titulo, Causa id_causa_rec) {
+    public Causa(int id_causa, String nombre_causa, String titulo, int id_causa_rec) {
         this.id_causa = id_causa;
         this.nombre_causa = nombre_causa;
         this.titulo = titulo;
         this.id_causa_rec = id_causa_rec;
     }
-    
+
     public int getId_causa() {
         return id_causa;
     }
@@ -50,14 +54,12 @@ public class Causa {
         this.titulo = titulo;
     }
 
-    public Causa getId_causa_rec() {
+    public int getId_causa_rec() {
         return id_causa_rec;
     }
 
-    public void setId_causa_rec(Causa id_causa_rec) {
+    public void setId_causa_rec(int id_causa_rec) {
         this.id_causa_rec = id_causa_rec;
     }
-
-  
     
 }
