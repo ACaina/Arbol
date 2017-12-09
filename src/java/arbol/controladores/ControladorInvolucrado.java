@@ -6,6 +6,7 @@
 package arbol.controladores;
 
 import arbol.modelo.entidades.Involucrado;
+import arbol.modelo.funciones.FInvolucrado;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -16,7 +17,7 @@ import recursos.Util;
 /**
  *
  * @author caina
- */
+ */ 
 @ManagedBean
 @ViewScoped
 public class ControladorInvolucrado {
@@ -29,27 +30,27 @@ public class ControladorInvolucrado {
     public ControladorInvolucrado() {
         objInvolucrado = new Involucrado();
         InvolucradoSel = new Involucrado();
-        obtenerCausa();
+        obtenerInvolucrado();
     }
 
     public void obtenerInvolucrado() {
         try {
-            lstInvolucrado = FCausa.obtenerCausas();
-            System.out.println("total Causas: "+lstCausas.size());
+            lstInvolucrado = FInvolucrado.obtenerInvolucrado();
+            System.out.println("total Involucrado: "+lstInvolucrado.size());
         } catch (Exception e) {
-            System.out.println("public void obtenerCausas() dice: "+e.getMessage());
+            System.out.println("public void obtenerInvolucrado() dice: "+e.getMessage());
             Util.addErrorMessage(e.getMessage());
         }
     }
 
     public void insertar() {
         try {
-            msgBD = FCausa.insertarCausa(objCausa);
-            objCausa = new Causa();
-            obtenerCausa();
+            msgBD = FInvolucrado.insertarInvolucrado(objInvolucrado);
+            objInvolucrado = new Involucrado();
+            obtenerInvolucrado();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblComerciante");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarComerciante').hide()");
+            resetearFitrosTabla("frmPrincipal:tblInvolucrado");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgInsertarInvolucrado').hide()");
         } catch (Exception e) {
             
             Util.addErrorMessage(e.getMessage());
@@ -59,13 +60,13 @@ public class ControladorInvolucrado {
     public void actualizar() {
         try {
             System.out.println("Entra actualizar");         
-            msgBD = FCausa.actualizarCausa(causaSel);
-            causaSel = new Causa();
+            msgBD = FInvolucrado.actualizarInvolucrado(InvolucradoSel);
+            InvolucradoSel = new Involucrado();
             System.out.println("222");
-            obtenerCausa();
+            obtenerInvolucrado();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblComerciante");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarComerciante').hide()");
+            resetearFitrosTabla("frmPrincipal:tblInvolucrado");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEditarInvolucrado').hide()");
         } catch (Exception e) {
             System.out.println("actualizar() dijo: " + e.getMessage());
             Util.addErrorMessage(e.getMessage());
@@ -74,45 +75,44 @@ public class ControladorInvolucrado {
 
      public void eliminar() {
         try {
-            msgBD = FCausa.eliminarCausa(causaSel);
-            causaSel = new Causa();
-            obtenerCausa();
+            msgBD = FInvolucrado.eliminarInvolucrado(InvolucradoSel);
+            InvolucradoSel = new Involucrado();
+            obtenerInvolucrado();
             Util.addSuccessMessage(msgBD);
-            resetearFitrosTabla("frmPrincipal:tblComerciante");
-            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEliminarComerciante').hide()");
+            resetearFitrosTabla("frmPrincipal:tblInvolucrado");
+            DefaultRequestContext.getCurrentInstance().execute("PF('dlgEliminarInvolucrado').hide()");
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
     }
-
     
     public void resetearFitrosTabla(String id) {
         DataTable table = (DataTable) FacesContext.getCurrentInstance().getViewRoot().findComponent(id);
         table.reset();
     }
 
-    public ArrayList<Causa> getLstCausas() {
-        return lstCausas;
+    public ArrayList<Involucrado> getLstInvolucrado() {
+        return lstInvolucrado;
     }
 
-    public void setLstCausas(ArrayList<Causa> lstCausas) {
-        this.lstCausas = lstCausas;
+    public void setLstInvolucrado(ArrayList<Involucrado> lstInvolucrado) {
+        this.lstInvolucrado = lstInvolucrado;
     }
 
-    public Causa getObjCausa() {
-        return objCausa;
+    public Involucrado getObjInvolucrado() {
+        return objInvolucrado;
     }
 
-    public void setObjCausa(Causa objCausa) {
-        this.objCausa = objCausa;
+    public void setObjInvolucrado(Involucrado objInvolucrado) {
+        this.objInvolucrado = objInvolucrado;
     }
 
-    public Causa getCausaSel() {
-        return causaSel;
+    public Involucrado getInvolucradoSel() {
+        return InvolucradoSel;
     }
 
-    public void setCausaSel(Causa causaSel) {
-        this.causaSel = causaSel;
+    public void setInvolucradoSel(Involucrado InvolucradoSel) {
+        this.InvolucradoSel = InvolucradoSel;
     }
 
     public String getMsgBD() {
