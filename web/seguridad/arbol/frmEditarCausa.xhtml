@@ -6,9 +6,9 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <p:dialog id="dlgEditarComerciante" widgetVar="dlgEditarComerciante" closable="false" modal="true" resizable="true" 
-              header="Editar Comerciante" showEffect="size" hideEffect="size">
-        <h:form id="frmEditarComerciante">
+    <p:dialog id="dlgEditarCausa" widgetVar="dlgEditarCausa" closable="false" modal="true" resizable="true" 
+              header="Editar Causa" showEffect="size" hideEffect="size">
+        <h:form id="frmEditarCausa">
             <h:panelGrid columns="2">
                 <p:outputLabel value="Id Causa:"/>
                 <p:inputText value="#{controladorCausa.causaSel.id_causa}"
@@ -24,7 +24,7 @@
                              requiredMessage="Titulo es Obligatorio"/>
                 <p:outputLabel value="Causa padre: "/>
                 <p:selectOneMenu id="cmbSubActividades" 
-                                 value="#{controladorCausa.causaSel.nombre_causa}" 
+                                 value="#{controladorCausa.causaSel.id_causa_rec}" 
                                      effect="fold" required="true" requiredMessage="La subactivida es obligatoria">
                         <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}"/>
                         <f:selectItems value="#{controladorCausa.lstCausas}"
@@ -34,9 +34,9 @@
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"
                                  action="#{controladorCausa.actualizar()}"
-                                 update="frmPrincipal:tblComerciante"/>
+                                 update="frmPrincipal:tblCausa"/>
                 <p:commandButton value="Cancelar" icon="ui-icon-close"
-                                 onclick="PF('dlgEditarComerciante').hide()"
+                                 onclick="PF('dlgEditarCausa').hide()"
                                  process="@this"/>
             </center>
         </h:form>

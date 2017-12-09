@@ -6,9 +6,9 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <p:dialog id="dlgInsertarComerciante" widgetVar="dlgInsertarComerciante" closable="false" modal="true" resizable="true" 
+    <p:dialog id="dlgInsertarCausa" widgetVar="dlgInsertarCausa" closable="false" modal="true" resizable="true" 
               header="Registrar Comerciante" showEffect="size" hideEffect="size">
-        <h:form id="frmInsertarComerciante">
+        <h:form id="frmInsertarCausa">
             <p:messages autoUpdate="true"/>
             <p:panel>
                 <h:panelGrid columns="2" > 
@@ -22,7 +22,7 @@
                                  requiredMessage="Titulo Obligatorio"/>
                     <p:outputLabel value="Sub causa: "/>
                 <p:selectOneMenu id="cmbSubActividades" 
-                                 value="#{controladorCausa.objCausa.id_causa}" 
+                                 value="#{controladorCausa.objCausa.id_causa_rec}" 
                                      effect="fold" required="true" requiredMessage="La subactivida es obligatoria">
                         <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}"/>
                         <f:selectItems value="#{controladorCausa.lstCausas}"
@@ -34,9 +34,9 @@
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"
                                  action="#{controladorCausa.insertar()}"
-                                 update="frmPrincipal:tblComerciante"/>
+                                 update="frmPrincipal:tblCausa"/>
                 <p:commandButton value="Cancelar" icon="ui-icon-close"
-                                 onclick="PF('dlgInsertarComerciante').hide()"
+                                 onclick="PF('dlgInsertarCausa').hide()"
                                  process="@this"/>
             </center>
         </h:form>

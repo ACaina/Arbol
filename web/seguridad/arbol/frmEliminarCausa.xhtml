@@ -6,9 +6,9 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <p:dialog id="dlgEliminarComerciante" widgetVar="dlgEliminarComerciante" closable="false" modal="true" resizable="true" 
-              header="Eliminar Comerciante" showEffect="size" hideEffect="size">
-        <h:form id="frmEliminarComerciante">
+    <p:dialog id="dlgEliminarCausa" widgetVar="dlgEliminarCausa" closable="false" modal="true" resizable="true" 
+              header="Eliminar Causa" showEffect="size" hideEffect="size">
+        <h:form id="frmEliminarCausa">
             <center>
                 <h3>¿Esta seguro que desea eliminar la Causa #{controladorCausa.causaSel.id_causa}?</h3>
             </center>
@@ -16,9 +16,9 @@
             <center>
                 <p:commandButton value="Aceptar" icon="ui-icon-check"
                                  action="#{controladorCausa.eliminar()}"
-                                 update="frmPrincipal:tblComerciante"/>
+                                 update="frmPrincipal:tblCausa"/>
                 <p:commandButton value="Cancelar" icon="ui-icon-close"
-                                 onclick="PF('dlgEliminarComerciante').hide()"
+                                 onclick="PF('dlgEliminarCausa').hide()"
                                  process="@this"/>
             </center>
         </h:form>
