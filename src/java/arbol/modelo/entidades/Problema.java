@@ -19,7 +19,7 @@ public class Problema {
        
     public Problema (){
         fk_causa = new Causa();
-        fk_involucrado = new Involucrado;
+        fk_involucrado = new Involucrado();
     }
 
     public Problema(int id_problema, String descripcion, Causa fk_causa) {
