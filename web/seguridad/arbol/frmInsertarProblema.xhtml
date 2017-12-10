@@ -8,11 +8,11 @@
 
     <p:dialog id="dlgInsertarProblema" widgetVar="dlgInsertarProblema" closable="false" modal="true" resizable="true" 
               header="Registrar Problema" showEffect="size" hideEffect="size">
-        <h:form id="frmInsertarPuesto">
+        <h:form id="frmInsertarProblema">
             <p:messages autoUpdate="true"/>
             <p:panel>
                 <h:panelGrid columns="2" >
-                    <p:outputLabel value="Numero Puesto: "/>
+                    <p:outputLabel value="Descripción: "/>
                     <p:inputText value="#{controladorProblema.objProblema.descripcion}"
                                      required="true"
                                      requiredMessage="La descripción es obligatoria"/>
@@ -22,11 +22,11 @@
                                      effect="fold" required="true" requiredMessage="La Causa es obligatoria">
                         <f:selectItem itemLabel="--Seleccione --" itemValue="#{null}"/>
                         <f:selectItems value="#{controladorProblema.lstCausa}"
-                                       var="sub" itemLabel="#{sub.nombre_causa}" itemValue="#{sub.idCausa}"/>
+                                       var="sub" itemLabel="#{sub.nombre_causa}" itemValue="#{sub.id_causa}"/>
                     </p:selectOneMenu>
                     <p:outputLabel value="Involucrado"/>
                     <p:selectOneMenu id="cmbInvolucrado" 
-                                     value="#{controladorProblema.objProblema.id_problema.id_problema}" 
+                                     value="#{controladorProblema.objProblema.id_problema}" 
                                      effect="fold" required="true" requiredMessage="El Involucrado es obligatoria">
                         <f:selectItem itemLabel="--Seleccione --" itemValue="#{null}"/>
                         <f:selectItems value="#{controladorProblema.lstInvolucrado}"
