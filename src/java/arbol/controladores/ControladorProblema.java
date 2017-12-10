@@ -16,6 +16,8 @@ import arbol.modelo.funciones.FProblema;
 import static arbol.modelo.funciones.FProblema.obtenerProblema;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.DefaultRequestContext;
@@ -25,6 +27,8 @@ import recursos.Util;
  *
  * @author Jackeline
  */
+@ManagedBean
+@ViewScoped
 public class ControladorProblema implements Serializable{
     private ArrayList<Problema> lstProblema;
     private ArrayList<Causa> lstCausa;
@@ -40,9 +44,7 @@ public class ControladorProblema implements Serializable{
         obtenerCausas();
         obtenerInvolucrado();
     }
-    
-
-    public void obtenerProblema() {
+   public void obtenerProblema() {
         try {
             lstProblema = FProblema.obtenerProblema();
             System.out.println("total de Problemas: " + lstProblema.size());
@@ -119,39 +121,40 @@ public class ControladorProblema implements Serializable{
         return lstProblema;
     }
 
-    public void setLstProblema(ArrayList<Problema> lstPuesto) {
+    public void setLstProblema(ArrayList<Problema> lstProblema) {
         this.lstProblema = lstProblema;
     }
 
     public ArrayList<Causa> getLstCausa() {
         return lstCausa;
     }
-    
+
     public void setLstCausa(ArrayList<Causa> lstCausa) {
         this.lstCausa = lstCausa;
     }
 
-    public ArrayList<Involucrado> getLstInvoludrado() {
+    public ArrayList<Involucrado> getLstInvolucrado() {
         return lstInvolucrado;
     }
 
     public void setLstInvolucrado(ArrayList<Involucrado> lstInvolucrado) {
         this.lstInvolucrado = lstInvolucrado;
     }
-    public Problema getObjPuesto() {
+
+    public Problema getObjProblema() {
         return objProblema;
     }
 
-    public void setObjPuesto(Problema objPuesto) {
-        this.objProblema = objPuesto;
+    public void setObjProblema(Problema objProblema) {
+        this.objProblema = objProblema;
     }
 
-    public Problema getPuestoSel() {
+    public Problema getProblemaSel() {
         return problemaSel;
     }
 
-    public void setPuestoSel(Problema puestoSel) {
-        this.problemaSel = puestoSel;
+    public void setProblemaSel(Problema problemaSel) {
+        this.problemaSel = problemaSel;
     }
 
     public String getMsgBD() {
@@ -160,8 +163,5 @@ public class ControladorProblema implements Serializable{
 
     public void setMsgBD(String msgBD) {
         this.msgBD = msgBD;
-    }
-
-
-    
+    }      
 }
