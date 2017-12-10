@@ -34,10 +34,10 @@ public class FInvolucrado {
                 involucrado = new Involucrado();
                 involucrado.setNombre_involucrado(resultSet.getString("nombre_involucrado"));
                 involucrado.setQuehacer(resultSet.getString("quehacer"));
-                involucrado.setInteres("interes");
-                involucrado.setFortalezas("fortalezas");
-                involucrado.setLimitaciones("limitaciones");
-                involucrado.setTipo("tipo");
+                involucrado.setInteres(resultSet.getString("interes"));
+                involucrado.setFortalezas(resultSet.getString("fortalezas"));
+                involucrado.setLimitaciones(resultSet.getString("limitaciones"));
+                involucrado.setTipo(resultSet.getString("tipo"));
 //                causa.setId_causa_rec(obtenerCausaDadoCodigo(resultSet.getInt("id_causa_rec")));
 //                causa.setSubActividad(FSubActividad.obtenerSubActividadDadoCodigo(resultSet.getInt("id_sub_actividad")));
             }
@@ -64,10 +64,10 @@ public class FInvolucrado {
                 involucrado.setId_involucrado(resultSet.getInt("id_involucrado"));
                 involucrado.setNombre_involucrado(resultSet.getString("nombre_involucrado"));
                 involucrado.setQuehacer(resultSet.getString("quehacer"));
-                involucrado.setInteres("interes");
-                involucrado.setFortalezas("fortalezas");
-                involucrado.setLimitaciones("limitaciones");
-                involucrado.setTipo("tipo");
+                involucrado.setInteres(resultSet.getString("interes"));
+                involucrado.setFortalezas(resultSet.getString("fortalezas"));
+                involucrado.setLimitaciones(resultSet.getString("limitaciones"));
+                involucrado.setTipo(resultSet.getString("tipo"));
                 lst.add(involucrado);
             }
         } catch (Exception e) {
